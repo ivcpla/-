@@ -150,10 +150,10 @@ nav {
     linear-gradient(rgba(10, 17, 40, 0.85), rgba(10, 17, 40, 0.9)),
     url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1800&q=80');
   background-size: cover; background-position: center;
-  display: flex; align-items: center; padding: 90px 80px 0;
+  display: flex; align-items: center; gap: 40px; padding: 90px 80px 0;
   position: relative;
 }
-.hero-content { max-width: 800px; position: relative; z-index: 1; }
+.hero-content { max-width: 800px; flex-shrink: 0; position: relative; z-index: 1; }
 .hero-badge {
   display: inline-block; color: var(--gl);
   font-size: 12px; font-weight: 600; letter-spacing: 2px; margin-bottom: 24px;
@@ -187,6 +187,47 @@ nav {
 .stat { text-align: left; border-left: 1px solid rgba(255,255,255,0.2); padding-left: 20px; }
 .stat-num { color: white; font-size: 36px; font-weight: 700; line-height: 1; }
 .stat-label { color: rgba(255,255,255,0.4); font-size: 12px; margin-top: 8px; }
+
+/* ===== HERO PROFILE CARD ===== */
+.hero-profile {
+  position: relative;
+  flex-shrink: 0;
+  width: 300px;
+  margin-left: auto;
+  background: rgba(10, 17, 40, 0.55);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(255,255,255,0.15);
+  border-top: 3px solid var(--gl);
+  padding: 36px 30px 30px;
+  z-index: 2;
+}
+.hero-profile-photo {
+  width: 112px; height: 112px;
+  margin: 0 auto 20px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 2px solid rgba(255,255,255,0.25);
+}
+.hero-profile-photo img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.hero-profile-badge { text-align: center; color: var(--gl); font-size: 11px; font-weight: 600; letter-spacing: 2px; margin-bottom: 12px; }
+.hero-profile-name { text-align: center; color: white; font-size: 19px; font-weight: 700; }
+.hero-profile-name span { display: block; font-size: 12px; font-weight: 400; color: rgba(255,255,255,0.55); margin-top: 6px; letter-spacing: 0.2px; line-height: 1.6; }
+.hero-profile-list { list-style: none; margin: 22px 0; }
+.hero-profile-list li { color: rgba(255,255,255,0.72); font-size: 12.5px; line-height: 2.1; padding-left: 14px; position: relative; }
+.hero-profile-list li::before { content: ''; position: absolute; left: 0; top: 9px; width: 4px; height: 4px; background: var(--gl); }
+.hero-profile-stats { display: flex; justify-content: center; padding-top: 18px; border-top: 1px solid rgba(255,255,255,0.15); margin-bottom: 22px; }
+.hero-profile-stat-num { color: white; font-size: 24px; font-weight: 700; text-align: center; line-height: 1; }
+.hero-profile-stat-label { color: rgba(255,255,255,0.45); font-size: 10.5px; text-align: center; margin-top: 6px; letter-spacing: 1px; }
+.hero-profile-btn {
+  display: block; width: 100%; text-align: center;
+  background: transparent; border: 1px solid rgba(255,255,255,0.3); color: white;
+  padding: 12px; font-size: 13px; font-weight: 500; cursor: pointer; transition: all 0.2s;
+}
+.hero-profile-btn:hover { background: white; color: var(--gd); border-color: white; }
+@media (max-width: 1360px) {
+  .hero-profile { display: none; }
+}
 
 /* ===== VALUE SECTION ===== */
 .value-section { background: var(--gp); padding: 120px 80px; }
@@ -386,8 +427,21 @@ footer {
         <button class="btn-outline" onclick="goPage('consult')">상담 예약하기</button>
       </div>
     </div>
-    <div class="hero-stats">
-      <div class="stat"><div class="stat-num">10+</div><div class="stat-label">Years Experience</div></div>
+    <div class="hero-profile fade">
+      <div class="hero-profile-photo"><img id="heroProfileImg" src="" alt="노동법률사무소 혁신 대표 공인노무사 임승호"></div>
+      <div class="hero-profile-badge">MANAGING LABOR ATTORNEY</div>
+      <div class="hero-profile-name">임승호<span>노동법률사무소 혁신<br>대표 공인노무사</span></div>
+      <ul class="hero-profile-list">
+        <li>공인노무사 25기</li>
+        <li>인하대학교 경제학 학사</li>
+        <li>現) 부천시청 노무전문관</li>
+        <li>前) LG화학 본사 노경기획팀</li>
+        <li>前) LG화학 익산공장 HR팀</li>
+      </ul>
+      <div class="hero-profile-stats">
+        <div><div class="hero-profile-stat-num">10+</div><div class="hero-profile-stat-label">YEARS EXPERIENCE</div></div>
+      </div>
+      <button class="hero-profile-btn" onclick="goPage('about','greeting')">대표 노무사 소개 보기</button>
     </div>
   </div>
 
@@ -764,6 +818,9 @@ function triggerFadeVisible() {
 
 document.addEventListener('DOMContentLoaded', () => {
   triggerFadeVisible();
+  const heroImg = document.getElementById('heroProfileImg');
+  const srcImg = document.querySelector('.greeting-avatar-img');
+  if (heroImg && srcImg) heroImg.src = srcImg.src;
 });
 
 // ===== 상담 예약 폼 제출 (Formspree 연동) =====
