@@ -132,6 +132,61 @@ nav {
 }
 .nav-cta:hover { background: var(--gm); color: white; }
 
+/* ===== MOBILE NAV TOGGLE ===== */
+.nav-toggle {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  width: 32px; height: 32px;
+  background: none; border: none; cursor: pointer;
+  padding: 0;
+}
+.nav-toggle span {
+  display: block; width: 100%; height: 2px;
+  background: var(--gd); transition: transform 0.25s ease, opacity 0.25s ease;
+}
+.nav-toggle.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.nav-toggle.open span:nth-child(2) { opacity: 0; }
+.nav-toggle.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+.mobile-nav {
+  display: none;
+  position: fixed;
+  top: 75px; left: 0; width: 100%;
+  max-height: calc(100vh - 75px);
+  overflow-y: auto;
+  background: white;
+  border-bottom: 1px solid var(--border);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+  z-index: 999;
+  flex-direction: column;
+  padding: 8px 0;
+}
+.mobile-nav.open { display: flex; }
+.mobile-nav-item { border-bottom: 1px solid var(--border); }
+.mobile-nav-item > .mnav-title {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 16px 24px; font-size: 15px; font-weight: 500; color: var(--td);
+  cursor: pointer;
+}
+.mobile-nav-item .mnav-arrow { transition: transform 0.2s; font-size: 12px; color: var(--ts); }
+.mobile-nav-item.expanded .mnav-arrow { transform: rotate(180deg); }
+.mobile-dropdown {
+  display: none;
+  flex-direction: column;
+  background: var(--gp);
+}
+.mobile-nav-item.expanded .mobile-dropdown { display: flex; }
+.mobile-dropdown a {
+  padding: 14px 24px 14px 36px; font-size: 14px; color: var(--tm); text-decoration: none;
+}
+.mobile-cta {
+  margin: 12px 24px; text-align: center;
+  border: 1px solid var(--gm); color: var(--gm);
+  padding: 12px; font-size: 14px; font-weight: 500; cursor: pointer;
+}
+
 /* ===== PAGES ===== */
 .page { display: none; }
 .page.active { display: block; }
@@ -425,11 +480,15 @@ footer {
 
 /* ===== MOBILE RESPONSIVE ===== */
 @media (max-width: 992px) {
-  nav { padding: 0 24px; height: 75px; }
+  nav { padding: 0 20px; height: 75px; }
   .nav-menu { display: none; }
   .nav-logo-img { height: 50px; }
+  .nav-toggle { display: flex; }
+  .nav-cta { padding: 7px 14px; font-size: 12.5px; }
   .hero { padding: 75px 24px 40px; }
-  .hero h1 { font-size: 34px; }
+  .hero h1 { font-size: 30px; }
+  .hero-btns { flex-wrap: wrap; }
+  .btn-primary, .btn-outline { padding: 14px 24px; font-size: 13.5px; }
   .hero-stats { position: static; margin-top: 60px; gap: 24px; }
   .value-section { padding: 80px 24px; }
   .value-grid { grid-template-columns: 1fr; }
@@ -474,7 +533,37 @@ footer {
     <div class="nav-item" id="nav-consult" onclick="goPage('consult')">상담예약</div>
   </div>
   <div class="nav-cta" onclick="goPage('consult')">Consultation</div>
+  <button class="nav-toggle" id="navToggle" onclick="toggleMobileNav()" aria-label="메뉴 열기">
+    <span></span><span></span><span></span>
+  </button>
 </nav>
+<div class="mobile-nav" id="mobileNav">
+  <div class="mobile-nav-item" id="mnav-about">
+    <div class="mnav-title" onclick="toggleMobileGroup('mnav-about')">
+      사무소 소개 <span class="mnav-arrow">▾</span>
+    </div>
+    <div class="mobile-dropdown">
+      <a onclick="mobileGoPage('about','greeting')">인사말 및 경력</a>
+    </div>
+  </div>
+  <div class="mobile-nav-item" id="mnav-services">
+    <div class="mnav-title" onclick="toggleMobileGroup('mnav-services')">
+      업무분야 <span class="mnav-arrow">▾</span>
+    </div>
+    <div class="mobile-dropdown">
+      <a onclick="mobileGoPage('services','tab0')">기업 자문</a>
+      <a onclick="mobileGoPage('services','tab1')">개별적 노동관계</a>
+      <a onclick="mobileGoPage('services','tab2')">집단적 노사관계</a>
+      <a onclick="mobileGoPage('services','tab3')">노동사건 대리</a>
+      <a onclick="mobileGoPage('services','tab4')">인사·임금 컨설팅</a>
+      <a onclick="mobileGoPage('services','tab5')">노동교육·강의</a>
+    </div>
+  </div>
+  <div class="mobile-nav-item">
+    <div class="mnav-title" onclick="mobileGoPage('consult')">상담예약</div>
+  </div>
+  <div class="mobile-cta" onclick="mobileGoPage('consult')">Consultation</div>
+</div>
 
 <!-- ===== HOME PAGE ===== -->
 <div class="page active" id="page-home">
@@ -840,6 +929,26 @@ footer {
 
 <!-- ===== SCRIPTS ===== -->
 <script>
+function toggleMobileNav() {
+  document.getElementById('navToggle').classList.toggle('open');
+  document.getElementById('mobileNav').classList.toggle('open');
+}
+function closeMobileNav() {
+  document.getElementById('navToggle').classList.remove('open');
+  document.getElementById('mobileNav').classList.remove('open');
+  document.querySelectorAll('.mobile-nav-item').forEach(i => i.classList.remove('expanded'));
+}
+function toggleMobileGroup(id) {
+  const item = document.getElementById(id);
+  const wasExpanded = item.classList.contains('expanded');
+  document.querySelectorAll('.mobile-nav-item').forEach(i => i.classList.remove('expanded'));
+  if (!wasExpanded) item.classList.add('expanded');
+}
+function mobileGoPage(page, sub) {
+  closeMobileNav();
+  goPage(page, sub);
+}
+
 function goPage(page, sub) {
   document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
   document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
