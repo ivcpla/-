@@ -503,6 +503,13 @@ nav {
 .sec { padding: 72px 80px; }
 .sec.gray { background: var(--gp); }
 
+/* ===== CENTERED CONTENT LAYOUT (2.5 : 5 : 2.5) ===== */
+.center-wrap { display: grid; grid-template-columns: 2.5fr 5fr 2.5fr; }
+.center-wrap > .center-col { grid-column: 2; min-width: 0; }
+@media (max-width: 1300px) {
+  .center-wrap { grid-template-columns: 1fr 7fr 1fr; }
+}
+
 /* ===== GREETING ===== */
 .greeting-wrap { display: grid; grid-template-columns: 240px 1fr; gap: 50px; align-items: start; }
 .greeting-avatar { position: sticky; top: 110px; }
@@ -639,6 +646,8 @@ footer {
   .nav-menu { display: none; }
   .nav-logo-img { height: 36px; }
   .nav-toggle { display: flex; flex-shrink: 0; }
+  .center-wrap { grid-template-columns: 1fr; }
+  .center-wrap > .center-col { grid-column: 1; }
   .nav-cta { padding: 7px 12px; font-size: 12px; flex-shrink: 0; }
   .hero { padding: 75px 24px 0; min-height: auto; }
   .hero-text { padding: 40px 0 44px; }
@@ -683,7 +692,7 @@ footer {
     <div class="nav-item" id="nav-about" onclick="goPage('about')">
       사무소 소개
       <div class="dropdown">
-        <a onclick="goPage('about','greeting')">인사말 및 경력</a>
+        <a onclick="goPage('about','greeting')">인사말 및 대표노무사 소개</a>
       </div>
     </div>
     <div class="nav-item" id="nav-services" onclick="goPage('services')">
@@ -710,7 +719,7 @@ footer {
       사무소 소개 <span class="mnav-arrow">▾</span>
     </div>
     <div class="mobile-dropdown">
-      <a onclick="mobileGoPage('about','greeting')">인사말 및 경력</a>
+      <a onclick="mobileGoPage('about','greeting')">인사말 및 대표노무사 소개</a>
     </div>
   </div>
   <div class="mobile-nav-item" id="mnav-services">
@@ -840,6 +849,8 @@ footer {
   </div>
 
   <div class="sec fade" id="about-greeting">
+    <div class="center-wrap">
+    <div class="center-col">
     <div class="sec-eye">Greeting & Biography</div>
     <div class="sec-title">인사말 및 대표 경력</div>
     <div class="greeting-wrap">
@@ -867,7 +878,7 @@ footer {
           <div class="sig-role">노동법률사무소 혁신 대표 공인노무사</div>
         </div>
         <div class="profile-detail fade">
-      <div class="profile-col">
+      <div class="profile-col zoom-card">
         <h3 class="profile-col-title">경력</h3>
         <ul class="profile-rows">
           <li><span class="pr-tag">現</span><span class="pr-body"><strong>부천시청</strong> 노무전문관<em>2024.03 ~</em></span></li>
@@ -876,7 +887,7 @@ footer {
           <li><span class="pr-tag">前</span><span class="pr-body"><strong>노무법인 리즌</strong><em>2017.11 ~ 2018.06</em></span></li>
         </ul>
       </div>
-      <div class="profile-col">
+      <div class="profile-col zoom-card">
         <h3 class="profile-col-title">자격 · 학력</h3>
         <ul class="profile-rows">
           <li><span class="pr-tag">자격</span><span class="pr-body"><strong>공인노무사</strong> 25기</span></li>
@@ -893,6 +904,8 @@ footer {
       </div>
         </div>
       </div>
+    </div>
+    </div>
     </div>
   </div>
 
