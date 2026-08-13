@@ -44,7 +44,7 @@
 </script>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;800&family=Noto+Serif+KR:wght@400;500;600;700&family=Cinzel:wght@500;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;800&family=Noto+Serif+KR:wght@400;500;600;700&family=Cinzel:wght@500;700&family=Nanum+Pen+Script&display=swap" rel="stylesheet">
 
 <style>
 /* ===== RESET & ROOT ===== */
@@ -541,20 +541,17 @@ nav {
   font-size: 23px; font-weight: 600; line-height: 1.62;
   color: var(--gd);
   position: relative;
-  padding-left: 32px;
   margin-bottom: 38px;
-}
-.greeting-quote .quote-mark {
-  position: absolute; left: -6px; top: -18px;
-  font-size: 58px; font-family: 'Cinzel', serif; color: var(--gl); opacity: 0.5; line-height: 1;
 }
 .greeting-body p { font-size: 15px; color: var(--tm); line-height: 1.95; margin-bottom: 16px; font-weight: 300; }
 .greeting-sig {
   margin-top: 40px; padding-top: 24px; border-top: 1px solid var(--border);
-  display: flex; align-items: baseline; gap: 14px; flex-wrap: wrap;
+  display: flex; align-items: center; justify-content: space-between; gap: 14px; flex-wrap: wrap;
 }
+.sig-text-block { display: flex; align-items: baseline; gap: 14px; flex-wrap: wrap; }
 .sig-name { font-family: 'Noto Serif KR', serif; font-size: 19px; font-weight: 700; color: var(--gd); }
 .sig-role { font-size: 13px; color: var(--ts); }
+.sig-signature { font-family: 'Nanum Pen Script', cursive; font-size: 40px; color: var(--gd); line-height: 1; transform: rotate(-3deg); }
 
 .profile-detail {
   display: grid; grid-template-columns: 1fr 1fr; gap: 44px;
@@ -566,13 +563,19 @@ nav {
   border-bottom: 1px solid var(--gl); display: inline-block;
 }
 .profile-rows { list-style: none; }
-.profile-rows li { display: flex; gap: 18px; padding: 14px 0; border-bottom: 1px solid var(--border); font-size: 13.5px; }
+.profile-rows li { display: flex; gap: 16px; padding: 15px 0; border-bottom: 1px solid var(--border); font-size: 15.5px; align-items: baseline; }
 .profile-rows li:last-child { border-bottom: none; }
-.pr-tag { flex-shrink: 0; width: 34px; font-size: 11px; font-weight: 700; color: var(--gl); letter-spacing: 0.5px; padding-top: 2px; }
-.pr-body strong { color: var(--td); font-weight: 500; display: block; }
-.pr-body em { font-style: normal; color: var(--ts); font-size: 12px; display: block; margin-top: 3px; }
-.profile-tags { display: flex; flex-wrap: wrap; gap: 10px; }
-.tag { font-size: 12.5px; color: var(--gm); background: var(--gp); border: 1px solid var(--border); padding: 9px 16px; }
+.pr-tag { flex-shrink: 0; width: 32px; font-size: 12px; font-weight: 700; color: var(--gl); letter-spacing: 0.5px; }
+.pr-body { flex: 1; display: flex; justify-content: space-between; align-items: baseline; gap: 12px; }
+.pr-body strong { color: var(--td); font-weight: 600; }
+.pr-body em { font-style: normal; color: var(--ts); font-size: 13.5px; flex-shrink: 0; white-space: nowrap; }
+.profile-tags { display: flex; flex-wrap: wrap; row-gap: 10px; font-size: 14.5px; color: var(--tm); font-weight: 400; }
+.profile-tags span { position: relative; padding-right: 16px; margin-right: 16px; }
+.profile-tags span:last-child { padding-right: 0; margin-right: 0; }
+.profile-tags span:not(:last-child)::after {
+  content: ''; position: absolute; right: 0; top: 50%; transform: translateY(-50%);
+  width: 1px; height: 12px; background: var(--border);
+}
 
 /* ===== SERVICES ===== */
 .services-tab { display: flex; border-bottom: 1px solid var(--border); margin-bottom: 60px; }
@@ -865,7 +868,7 @@ footer {
       </div>
       <div class="greeting-text">
         <blockquote class="greeting-quote">
-          <span class="quote-mark">&ldquo;</span>노동법률의 전문성과 현장의 유연함으로<br>지속 가능한 미래 노사관계를 개척합니다.
+          노동법률의 전문성과 현장의 유연함으로<br>지속 가능한 미래 노사관계를 개척합니다.
         </blockquote>
         <div class="greeting-body">
           <p>안녕하십니까. 노동법률사무소 혁신 대표 공인노무사 임승호입니다.</p>
@@ -874,34 +877,38 @@ footer {
           <p>감사합니다.</p>
         </div>
         <div class="greeting-sig">
-          <div class="sig-name">임승호</div>
-          <div class="sig-role">노동법률사무소 혁신 대표 공인노무사</div>
+          <div class="sig-text-block">
+            <div class="sig-name">임승호</div>
+            <div class="sig-role">노동법률사무소 혁신 대표 공인노무사</div>
+          </div>
+          <div class="sig-signature">임승호</div>
         </div>
-        <div class="profile-detail fade">
+      </div>
+    </div>
+
+    <div class="profile-detail fade">
       <div class="profile-col zoom-card">
         <h3 class="profile-col-title">경력</h3>
         <ul class="profile-rows">
-          <li><span class="pr-tag">現</span><span class="pr-body"><strong>부천시청</strong> 노무전문관<em>2024.03 ~</em></span></li>
-          <li><span class="pr-tag">前</span><span class="pr-body"><strong>LG화학</strong> 본사 노경기획팀<em>2022.08 ~ 2024.03</em></span></li>
-          <li><span class="pr-tag">前</span><span class="pr-body"><strong>LG화학</strong> 익산공장 HR팀<em>2018.07 ~ 2022.07</em></span></li>
+          <li><span class="pr-tag">現</span><span class="pr-body"><strong>부천시청 노무전문관</strong><em>2024.03 ~</em></span></li>
+          <li><span class="pr-tag">前</span><span class="pr-body"><strong>LG화학 본사 노경기획팀</strong><em>2022.08 ~ 2024.03</em></span></li>
+          <li><span class="pr-tag">前</span><span class="pr-body"><strong>LG화학 익산공장 HR팀</strong><em>2018.07 ~ 2022.07</em></span></li>
           <li><span class="pr-tag">前</span><span class="pr-body"><strong>노무법인 리즌</strong><em>2017.11 ~ 2018.06</em></span></li>
         </ul>
       </div>
       <div class="profile-col zoom-card">
         <h3 class="profile-col-title">자격 · 학력</h3>
         <ul class="profile-rows">
-          <li><span class="pr-tag">자격</span><span class="pr-body"><strong>공인노무사</strong> 25기</span></li>
-          <li><span class="pr-tag">학력</span><span class="pr-body"><strong>인하대학교</strong> 경제학 학사</span></li>
+          <li><span class="pr-tag">자격</span><span class="pr-body"><strong>공인노무사</strong><em>25기</em></span></li>
+          <li><span class="pr-tag">학력</span><span class="pr-body"><strong>인하대학교</strong><em>경제학 학사</em></span></li>
         </ul>
         <h3 class="profile-col-title" style="margin-top:36px">주요 업무</h3>
         <div class="profile-tags">
-          <span class="tag">노동청·노동위원회 사건 대응</span>
-          <span class="tag">사내 징계 총괄</span>
-          <span class="tag">적법도급 프로젝트</span>
-          <span class="tag">단체교섭 실무 및 교섭위원 전담</span>
-          <span class="tag">복수노동조합 노사관계 관리</span>
-        </div>
-      </div>
+          <span>노동청·노동위원회 사건 대응</span>
+          <span>사내 징계 총괄</span>
+          <span>적법도급 프로젝트</span>
+          <span>단체교섭 실무 및 교섭위원 전담</span>
+          <span>복수노동조합 노사관계 관리</span>
         </div>
       </div>
     </div>
