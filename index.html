@@ -551,7 +551,6 @@ nav {
 .sig-text-block { display: flex; align-items: baseline; gap: 14px; flex-wrap: wrap; }
 .sig-name { font-family: 'Noto Serif KR', serif; font-size: 19px; font-weight: 700; color: var(--gd); }
 .sig-role { font-size: 13px; color: var(--ts); }
-.sig-signature { font-family: 'Nanum Pen Script', cursive; font-size: 40px; color: var(--gd); line-height: 1; transform: rotate(-3deg); }
 
 .profile-detail {
   display: grid; grid-template-columns: 1fr 1fr; gap: 44px;
@@ -578,6 +577,10 @@ nav {
 }
 
 /* ===== SERVICES ===== */
+.center-wrap.ratio-2-6-2 { grid-template-columns: 2fr 6fr 2fr; }
+@media (max-width: 1300px) {
+  .center-wrap.ratio-2-6-2 { grid-template-columns: 1fr 8fr 1fr; }
+}
 .services-tab { display: flex; border-bottom: 1px solid var(--border); margin-bottom: 60px; }
 .stab {
   padding: 16px 32px; font-size: 15px; font-weight: 400; color: var(--ts);
@@ -586,6 +589,9 @@ nav {
 .stab.active { color: var(--gd); border-bottom-color: var(--gd); font-weight: 700; }
 .stab-content { display: none; }
 .stab-content.active { display: block; }
+.service-img { grid-column: 1 / -1; width: 100%; height: 320px; overflow: hidden; margin-bottom: 44px; }
+.service-img img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.5s ease; }
+.service-img:hover img { transform: scale(1.04); }
 .service-detail { display: grid; grid-template-columns: 1.2fr 1fr; gap: 80px; }
 .service-info h2 { font-size: 26px; font-weight: 700; color: var(--gd); margin-bottom: 20px; }
 .service-info p { font-size: 15px; color: var(--tm); margin-bottom: 36px; font-weight: 300; }
@@ -678,6 +684,7 @@ footer {
   .profile-detail { grid-template-columns: 1fr; gap: 32px; margin-top: 28px; padding-top: 24px; }
   .services-tab { overflow-x: auto; }
   .service-detail { grid-template-columns: 1fr; gap: 40px; }
+  .service-img { height: 200px; margin-bottom: 28px; }
   .consult-wrap { grid-template-columns: 1fr; gap: 40px; }
   footer { grid-template-columns: 1fr; padding: 48px 24px; }
   .footer-copy { grid-column: 1; }
@@ -881,7 +888,6 @@ footer {
             <div class="sig-name">임승호</div>
             <div class="sig-role">노동법률사무소 혁신 대표 공인노무사</div>
           </div>
-          <div class="sig-signature">임승호</div>
         </div>
       </div>
     </div>
@@ -936,6 +942,8 @@ footer {
     <p> 완결성 높은 법률·인사 노무 가이드라인</p>
   </div>
   <div class="sec">
+    <div class="center-wrap ratio-2-6-2">
+    <div class="center-col">
     <div class="services-tab">
       <div class="stab active" onclick="switchTab(0)">기업 자문</div>
       <div class="stab" onclick="switchTab(1)">개별적 노동관계</div>
@@ -947,6 +955,7 @@ footer {
 
     <div class="stab-content active" id="stab-0">
       <div class="service-detail">
+        <div class="service-img zoom-card"><img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=1400&q=80" alt="기업 상시 노무 자문"></div>
         <div class="service-info">
           <h2>기업 상시 노무 자문</h2>
           <p>기업 경영 시 동반되는 인사 노무 전반의 상시 법률 리스크를 선제적으로 통제합니다. 취업규칙 제·개정, 단체협약 검토 등을 통해 분쟁 소지를 원천 봉쇄합니다.</p>
@@ -968,6 +977,7 @@ footer {
 
     <div class="stab-content" id="stab-1">
       <div class="service-detail">
+        <div class="service-img zoom-card"><img src="https://images.unsplash.com/photo-1758691736979-ff263c04b3d1?auto=format&fit=crop&w=1400&q=80" alt="개별적 노동관계 관리"></div>
         <div class="service-info">
           <h2>개별적 노동관계 관리</h2>
           <p>해고, 징계처분, 임금체불 등 근로자와 사용자 간 발생할 수 있는 다양한 법적 갈등을 세련되게 풀어나가며, 직장 내 괴롭힘 이슈에도 엄정한 솔루션을 매칭합니다.</p>
@@ -988,6 +998,7 @@ footer {
 
     <div class="stab-content" id="stab-2">
       <div class="service-detail">
+        <div class="service-img zoom-card"><img src="https://images.unsplash.com/photo-1716703435453-a7733d600d68?auto=format&fit=crop&w=1400&q=80" alt="집단적 노사관계 조율"></div>
         <div class="service-info">
           <h2>집단적 노사관계 조율</h2>
           <p>복수노조 체제하의 교섭창구단일화 대응, 단체교섭 전략 수립 및 대응, 파업 및 준법투쟁을 비롯한 집단 쟁의행위 위법성 진단 등 고도의 정치적·법률적 솔루션을 제공합니다.</p>
@@ -1008,6 +1019,7 @@ footer {
 
     <div class="stab-content" id="stab-3">
       <div class="service-detail">
+        <div class="service-img zoom-card"><img src="https://images.unsplash.com/photo-1589391886645-d51941baf7fb?auto=format&fit=crop&w=1400&q=80" alt="노동사건 법률 대리"></div>
         <div class="service-info">
           <h2>노동사건 법률 대리</h2>
           <p>노동위원회 및 노동청 사건 발생 시, 체계적인 사실관계 분석을 바탕으로 최선의 결과를 도출 할 수 있는 합리적 대응 논리를 구축합니다.</p>
@@ -1027,6 +1039,7 @@ footer {
 
     <div class="stab-content" id="stab-4">
       <div class="service-detail">
+        <div class="service-img zoom-card"><img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1400&q=80" alt="인사·임금 컨설팅"></div>
         <div class="service-info">
           <h2>인사·임금 컨설팅</h2>
           <p>통상임금 소송 리스크 축소 솔루션, 포괄임금제 개선 프로젝트, 직무급·성과급으로의 임금체계 개편 및 유연근무제 설계를 통해 HR 경쟁력을 극대화합니다.</p>
@@ -1047,6 +1060,7 @@ footer {
 
     <div class="stab-content" id="stab-5">
       <div class="service-detail">
+        <div class="service-img zoom-card"><img src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?auto=format&fit=crop&w=1400&q=80" alt="노동법률 교육 및 강의"></div>
         <div class="service-info">
           <h2>노동법률 교육 및 강의</h2>
           <p>C-Level 및 인사담당자를 위한 리스크 관리 특강부터 임직원 대상 법정 의무 교육까지 최신 판례 가이드를 기반으로 한 맞춤 강좌를 진행합니다.</p>
@@ -1062,6 +1076,8 @@ footer {
           <div class="hl-item"><div class="hl-num">02</div><p>사내 노무 리스크 자가진단 워크숍 동시 진행 가능</p></div>
         </div>
       </div>
+    </div>
+    </div>
     </div>
   </div>
   <footer>
