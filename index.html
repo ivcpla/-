@@ -576,6 +576,37 @@ nav {
   width: 1px; height: 12px; background: var(--border);
 }
 
+/* ===== LOCATION / DIRECTIONS ===== */
+.loc-map {
+  position: relative;
+  width: 100%; height: 220px;
+  background: var(--gp);
+  border: 1px solid var(--border);
+  margin: 36px 0 40px;
+  cursor: pointer;
+  display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 14px;
+  transition: background 0.2s;
+  background-image:
+    linear-gradient(var(--border) 1px, transparent 1px),
+    linear-gradient(90deg, var(--border) 1px, transparent 1px);
+  background-size: 32px 32px;
+}
+.loc-map:hover { background-color: #EFF2F6; }
+.loc-map-pin { width: 48px; height: 48px; border-radius: 50%; background: var(--gd); display: flex; align-items: center; justify-content: center; box-shadow: 0 10px 24px rgba(10,17,40,0.18); }
+.loc-map-pin svg { width: 24px; height: 24px; fill: white; }
+.loc-map-label { font-size: 13.5px; font-weight: 600; color: var(--gd); background: white; padding: 8px 16px; border: 1px solid var(--border); }
+.loc-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 32px 44px; margin-bottom: 40px; }
+.loc-block { padding-bottom: 20px; border-bottom: 1px solid var(--border); }
+.loc-block h3 { font-family: 'Noto Serif KR', serif; font-size: 14px; font-weight: 600; color: var(--gb); letter-spacing: 0.5px; margin-bottom: 10px; }
+.loc-block p { font-size: 14.5px; color: var(--tm); line-height: 1.7; font-weight: 300; }
+.loc-btn {
+  display: inline-block; text-decoration: none;
+  background: var(--gd); color: white;
+  padding: 15px 32px; font-size: 14px; font-weight: 600;
+  border: none; transition: all 0.2s;
+}
+.loc-btn:hover { background: var(--gm); }
+
 /* ===== SERVICES ===== */
 .center-wrap.ratio-2-6-2 { grid-template-columns: 2fr 6fr 2fr; }
 @media (max-width: 1300px) {
@@ -657,6 +688,8 @@ footer {
   .nav-logo-img { height: 36px; }
   .nav-toggle { display: flex; flex-shrink: 0; }
   .center-wrap, .center-wrap.ratio-2-6-2 { grid-template-columns: 1fr; }
+  .loc-grid { grid-template-columns: 1fr; gap: 24px; }
+  .loc-map { height: 180px; }
   .center-wrap > .center-col { grid-column: 1; }
   .nav-cta { padding: 7px 12px; font-size: 12px; flex-shrink: 0; }
   .hero { padding: 75px 24px 0; min-height: auto; }
@@ -705,6 +738,7 @@ footer {
       사무소 소개
       <div class="dropdown">
         <a onclick="goPage('about','greeting')">인사말 및 대표노무사 소개</a>
+        <a onclick="goPage('about','location')">오시는 길</a>
       </div>
     </div>
     <div class="nav-item" id="nav-services" onclick="goPage('services')">
@@ -732,6 +766,7 @@ footer {
     </div>
     <div class="mobile-dropdown">
       <a onclick="mobileGoPage('about','greeting')">인사말 및 대표노무사 소개</a>
+      <a onclick="mobileGoPage('about','location')">오시는 길</a>
     </div>
   </div>
   <div class="mobile-nav-item" id="mnav-services">
@@ -920,6 +955,44 @@ footer {
         </div>
       </div>
     </div>
+    </div>
+    </div>
+  </div>
+
+  <div class="sec fade" id="about-location">
+    <div class="center-wrap ratio-2-6-2">
+    <div class="center-col">
+      <div class="sec-eye">Directions</div>
+      <div class="sec-title">오시는 길</div>
+      <div class="sec-sub">노동법률사무소 혁신은 신중동역 인근 워크리움 중동점에 위치해 있습니다.</div>
+
+      <div class="loc-map" onclick="window.open('https://map.naver.com/p/search/%EB%85%B8%EB%8F%99%EB%B2%95%EB%A5%A0%EC%82%AC%EB%AC%B4%EC%86%8C%20%ED%98%81%EC%8B%A0','_blank')">
+        <div class="loc-map-pin">
+          <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5z"/></svg>
+        </div>
+        <div class="loc-map-label">네이버 지도에서 정확한 위치 확인 <span>&rarr;</span></div>
+      </div>
+
+      <div class="loc-grid">
+        <div class="loc-block">
+          <h3>주소</h3>
+          <p>경기 부천시 중동로254번길 90<br>워크리움 6F 6147호</p>
+        </div>
+        <div class="loc-block">
+          <h3>대중교통</h3>
+          <p>7호선 신중동역 인근<br>부천시청 도보 2분 거리</p>
+        </div>
+        <div class="loc-block">
+          <h3>주차</h3>
+          <p>건물 인근 공영주차장 이용 가능<br>(부천시공영노외주차장 4호)</p>
+        </div>
+        <div class="loc-block">
+          <h3>문의</h3>
+          <p>010-4587-4517<br>ivcpla@naver.com</p>
+        </div>
+      </div>
+
+      <a class="loc-btn" href="https://map.naver.com/p/search/%EB%85%B8%EB%8F%99%EB%B2%95%EB%A5%A0%EC%82%AC%EB%AC%B4%EC%86%8C%20%ED%98%81%EC%8B%A0" target="_blank" rel="noopener">네이버 지도에서 크게 보기</a>
     </div>
     </div>
   </div>
@@ -1204,7 +1277,8 @@ function goPage(page, sub) {
     }
     if (page === 'about') {
       const anchorMap = {
-        'greeting': 'about-greeting'
+        'greeting': 'about-greeting',
+        'location': 'about-location'
       };
       const anchorId = anchorMap[sub];
       if (anchorId) {
