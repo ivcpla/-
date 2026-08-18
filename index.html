@@ -263,7 +263,7 @@ nav {
 .btn-outline:hover { border-color: white; background: rgba(255,255,255,0.08); }
 
 /* ===== PRACTICE AREAS CAROUSEL ===== */
-.areas-section { position: relative; padding: 96px 0; overflow: hidden; background: var(--gp); }
+.areas-section { position: relative; padding: 96px 0; overflow: hidden; background: linear-gradient(180deg, #FFFFFF 0%, #F5F9FD 50%, #FFFFFF 100%); }
 .areas-head { position: relative; z-index: 1; padding: 0 80px; margin-bottom: 44px; display: flex; align-items: flex-end; justify-content: space-between; gap: 24px; flex-wrap: wrap; }
 .areas-head .sec-eye { color: var(--gb); }
 .areas-head .sec-title { color: var(--gd); margin-bottom: 0; }
@@ -283,15 +283,18 @@ nav {
   scroll-snap-align: start; flex-shrink: 0; width: calc((100% - 160px - 56px) / 3);
   min-width: 360px;
   padding: 40px; display: flex; flex-direction: column;
+  background: linear-gradient(150deg, #E9F2FC 0%, #F6FAFE 100%);
+  color: var(--gd); border: 1px solid var(--border);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
-.area-card.light { background: white; color: var(--gd); border: 1px solid var(--border); }
-.area-card.dark { background: var(--gd); color: white; }
-.area-label { font-size: 12.5px; font-weight: 600; letter-spacing: 1.5px; margin-bottom: 16px; opacity: 0.55; }
+.area-card:hover { transform: translateY(-4px); box-shadow: 0 20px 40px rgba(10,17,40,0.08); }
+.area-card.light, .area-card.dark { background: linear-gradient(150deg, #E9F2FC 0%, #F6FAFE 100%); color: var(--gd); }
+.area-label { font-size: 12.5px; font-weight: 600; letter-spacing: 1.5px; margin-bottom: 16px; opacity: 0.6; color: var(--gb); }
 .area-card h3 { font-size: 24px; font-weight: 700; margin-bottom: 24px; line-height: 1.35; }
 .area-img { width: 100%; height: 240px; overflow: hidden; margin-bottom: 24px; }
 .area-img img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.4s; }
 .area-card:hover .area-img img { transform: scale(1.06); }
-.area-card p { font-size: 14.5px; line-height: 1.9; opacity: 0.72; font-weight: 300; }
+.area-card p { font-size: 14.5px; line-height: 1.9; opacity: 0.75; font-weight: 300; }
 
 .pc-list { list-style: none; margin-bottom: 30px; }
 .pc-list li { display: flex; gap: 16px; padding: 13px 0; border-bottom: 1px solid var(--border); font-size: 13.5px; color: var(--tm); }
@@ -1175,6 +1178,8 @@ footer {
     <p>최고의 전문가와 보안이 유지되는 1:1 창구를 제공합니다</p>
   </div>
   <div class="sec">
+    <div class="center-wrap ratio-2-6-2">
+    <div class="center-col">
     <div class="consult-wrap fade">
       <div class="consult-info">
         <h2>Legal Advisory Counsel</h2>
@@ -1225,6 +1230,8 @@ footer {
           <div id="formMsg" style="margin-top:16px; font-size:14px; display:none;"></div>
         </form>
       </div>
+    </div>
+    </div>
     </div>
   </div>
   <footer>
