@@ -39,7 +39,7 @@
   },
   "telephone": "010-4587-4517",
   "email": "ivcpla@naver.com",
-  "url": "https://ivlabor.co.kr/"
+  "url": "https://www.hyeoksin-labor.com/"
 }
 </script>
 
@@ -200,55 +200,73 @@ nav {
 }
 .fade.show { opacity: 1; transform: none; }
 
-/* ===== HERO ===== */
-.hero {
-  position: relative;
-  min-height: 640px;
+/* ===== HERO SLIDER ===== */
+.hero-slider { position: relative; height: 100vh; min-height: 560px; overflow: hidden; }
+.hero-slide {
+  position: absolute; inset: 0;
   display: flex; align-items: center;
-  padding: 90px 80px 0;
-  overflow: hidden;
+  opacity: 0; visibility: hidden; z-index: 0;
+  transition: opacity 1s ease;
 }
-.hero::before {
-  content: ''; position: absolute; inset: 0;
-  background-image: url('https://images.unsplash.com/photo-1541506409807-29b68a3b631c?auto=format&fit=crop&w=1800&q=80');
+.hero-slide.active { opacity: 1; visibility: visible; z-index: 1; }
+.hero-slide-bg {
+  position: absolute; inset: 0;
   background-size: cover; background-position: center;
-  z-index: 0;
+  transform: scale(1.08); transition: transform 7s ease;
 }
-.hero::after {
-  content: ''; position: absolute; inset: 0;
-  background: linear-gradient(100deg, rgba(6,11,28,0.92) 0%, rgba(8,14,32,0.78) 42%, rgba(10,17,40,0.42) 75%, rgba(10,17,40,0.3) 100%);
-  z-index: 0;
+.hero-slide.active .hero-slide-bg { transform: scale(1); }
+.hero-slide-overlay {
+  position: absolute; inset: 0;
+  background: linear-gradient(100deg, rgba(6,11,28,0.88) 0%, rgba(8,14,32,0.68) 48%, rgba(10,17,40,0.32) 100%);
 }
-.hero-text {
+.hero-slide-content {
   position: relative; z-index: 1;
-  padding: 64px 0 76px;
-  width: 100%;
-  display: flex; justify-content: center; text-align: center;
+  padding: 90px 80px 0; width: 100%;
 }
-.hero-content { max-width: 880px; }
-.hero-meta { justify-content: center; }
-.hero-btns { justify-content: center; }
-.hero-badge {
-  display: inline-block; color: var(--gl);
-  font-size: 11.5px; font-weight: 600; letter-spacing: 2.5px; margin-bottom: 22px;
-  text-transform: uppercase;
+.hero-slide-inner { max-width: 720px; }
+.hero-slide-num {
+  color: rgba(255,255,255,0.55); font-size: 13px; font-weight: 600; letter-spacing: 2px;
+  margin-bottom: 20px;
 }
-.hero h1 {
-  color: white; font-size: 46px; font-weight: 700; line-height: 1.32;
-  letter-spacing: -1.5px; margin-bottom: 22px;
+.hero-slide-num b { color: white; font-size: 15px; }
+.hero-slide-eyebrow {
+  color: var(--gl); font-size: 11.5px; font-weight: 600; letter-spacing: 2.5px;
+  text-transform: uppercase; margin-bottom: 22px;
 }
-.hero p {
+.hero-slide-content h1, .hero-slide-content h2 {
+  color: white; font-weight: 700; line-height: 1.32; letter-spacing: -1.5px; margin-bottom: 22px;
+}
+.hero-slide-content h1 { font-size: 46px; }
+.hero-slide-content h2 { font-size: 38px; }
+.hero-slide-content p {
   color: rgba(255,255,255,0.78); font-size: 16px; font-weight: 300;
-  line-height: 1.85; margin-bottom: 28px;
+  line-height: 1.85; margin-bottom: 28px; max-width: 560px;
 }
-.hero-meta {
-  display: flex; align-items: center; flex-wrap: wrap; gap: 10px;
-  font-size: 12.5px; color: rgba(255,255,255,0.6); letter-spacing: 0.2px;
-  padding-bottom: 28px; margin-bottom: 28px; border-bottom: 1px solid rgba(255,255,255,0.18);
+.hero-slide-btns { display: flex; gap: 14px; align-items: center; }
+.hero-slide-link {
+  color: white; font-size: 14.5px; font-weight: 600; text-decoration: none;
+  border-bottom: 1px solid rgba(255,255,255,0.5); padding-bottom: 4px; cursor: pointer;
+  display: inline-flex; align-items: center; gap: 8px; transition: border-color 0.2s;
 }
-.hero-meta b { color: white; font-weight: 700; }
-.hero-meta .dot { color: rgba(255,255,255,0.3); }
-.hero-btns { display: flex; gap: 14px; }
+.hero-slide-link:hover { border-color: white; }
+
+.hero-slider-controls {
+  position: absolute; left: 0; right: 0; bottom: 40px; z-index: 3;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 80px;
+}
+.hero-arrows { display: flex; gap: 10px; }
+.hero-arrows button {
+  width: 46px; height: 46px; border-radius: 50%; border: 1px solid rgba(255,255,255,0.35);
+  background: rgba(255,255,255,0.05); color: white; font-size: 17px; cursor: pointer; transition: all 0.2s;
+}
+.hero-arrows button:hover { background: white; color: var(--gd); border-color: white; }
+.hero-dots { display: flex; gap: 10px; }
+.hero-dots .dot {
+  width: 8px; height: 8px; border-radius: 50%; background: rgba(255,255,255,0.35);
+  cursor: pointer; transition: all 0.25s; padding: 0; border: none;
+}
+.hero-dots .dot.active { background: white; width: 26px; border-radius: 5px; }
 .btn-primary {
   background: white; color: var(--gd);
   padding: 15px 32px; font-size: 14px; font-weight: 600;
@@ -695,14 +713,17 @@ footer {
   .loc-map { height: 180px; }
   .center-wrap > .center-col { grid-column: 1; }
   .nav-cta { padding: 7px 12px; font-size: 12px; flex-shrink: 0; }
-  .hero { padding: 75px 24px 0; min-height: auto; }
-  .hero-text { padding: 40px 0 44px; }
-  .hero-content { max-width: 100%; width: 100%; }
-  .hero h1 { font-size: 27px; letter-spacing: -1px; }
-  .hero p { font-size: 14.5px; margin-bottom: 20px; }
-  .hero-meta { font-size: 11.5px; padding-bottom: 20px; margin-bottom: 20px; }
+  .hero-slider { height: 100vh; min-height: 480px; }
+  .hero-slide-content { padding: 75px 24px 0; }
+  .hero-slide-inner { max-width: 100%; }
+  .hero-slide-content h1 { font-size: 27px; letter-spacing: -1px; }
+  .hero-slide-content h2 { font-size: 24px; letter-spacing: -1px; }
+  .hero-slide-content p { font-size: 14.5px; margin-bottom: 20px; }
+  .hero-slide-num { font-size: 11.5px; margin-bottom: 14px; }
   .mobile-br { display: none; }
-  .hero-btns { flex-wrap: wrap; }
+  .hero-slide-btns { flex-wrap: wrap; }
+  .hero-slider-controls { bottom: 20px; padding: 0 24px; }
+  .hero-arrows button { width: 38px; height: 38px; font-size: 14px; }
   .btn-primary, .btn-outline { padding: 14px 24px; font-size: 13.5px; }
   .areas-section { padding: 48px 0; }
   .areas-head { padding: 0 24px; margin-bottom: 24px; }
@@ -793,18 +814,115 @@ footer {
 
 <!-- ===== HOME PAGE ===== -->
 <div class="page active" id="page-home">
-  <div class="hero">
-    <div class="hero-text">
-    <div class="hero-content">
-      <div class="hero-badge">Labor Law Office · Innovation</div>
-      <h1>LABOR LAW REDEFINED<br class="mobile-br"></h1>
-      <p>대기업 노사관리 및 공공기관 실무 경험 기반의 노동 전문가.<br class="mobile-br">기업의 노사관계를 법률과 현장의 언어로 설계합니다.</p>
-      <div class="hero-meta"> 기업 노무자문 <span class="dot">·</span> 노동청·노동위원회 <span class="dot">·</span> 노동조합·단체교섭 <span class="dot">·</span> 노사분쟁 관리</div>
-      <div class="hero-btns">
-        <button class="btn-primary" onclick="goPage('services')"> Expertise</button>
-        <button class="btn-primary" onclick="goPage('services')"> 상담 예약</button>
+  <div class="hero-slider" id="heroSlider">
+    <div class="hero-slide active">
+      <div class="hero-slide-bg" style="background-image:url('https://images.unsplash.com/photo-1541506409807-29b68a3b631c?auto=format&fit=crop&w=1800&q=80')"></div>
+      <div class="hero-slide-overlay"></div>
+      <div class="hero-slide-content">
+        <div class="hero-slide-inner">
+          <div class="hero-slide-num"><b>01</b> / 07</div>
+          <div class="hero-slide-eyebrow">Labor Law Office · Innovation</div>
+          <h1>노동법의 패러다임 혁신,<br class="mobile-br">혁신적 노사관계의 기준을 제시합니다</h1>
+          <p>대기업 노사관리 및 공공기관 실무 경험 기반의 노동 전문가.<br class="mobile-br">기업 법률 리스크 헷지부터 집단적 노사관계 조율까지 전방위 솔루션을 제공합니다.</p>
+          <div class="hero-slide-btns">
+            <button class="btn-primary" onclick="goPage('services')">업무분야 Expertise</button>
+            <button class="btn-outline" onclick="goPage('consult')">상담 예약하기</button>
+          </div>
+        </div>
       </div>
     </div>
+    <div class="hero-slide">
+      <div class="hero-slide-bg" style="background-image:url('https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=1800&q=80')"></div>
+      <div class="hero-slide-overlay"></div>
+      <div class="hero-slide-content">
+        <div class="hero-slide-inner">
+          <div class="hero-slide-num"><b>02</b> / 07</div>
+          <div class="hero-slide-eyebrow">PRACTICE AREA 01</div>
+          <h2>기업 상시 노무 자문</h2>
+          <p>기업 경영 시 동반되는 인사 노무 전반의 상시 법률 리스크를 선제적으로 통제합니다. 취업규칙 제·개정, 단체협약 검토 등을 통해 분쟁 소지를 원천 봉쇄합니다.</p>
+          <a class="hero-slide-link" onclick="goPage('services','tab0')">자세히 보기 <span>&rarr;</span></a>
+        </div>
+      </div>
+    </div>
+    <div class="hero-slide">
+      <div class="hero-slide-bg" style="background-image:url('https://images.unsplash.com/photo-1758691736979-ff263c04b3d1?auto=format&fit=crop&w=1800&q=80')"></div>
+      <div class="hero-slide-overlay"></div>
+      <div class="hero-slide-content">
+        <div class="hero-slide-inner">
+          <div class="hero-slide-num"><b>03</b> / 07</div>
+          <div class="hero-slide-eyebrow">PRACTICE AREA 02</div>
+          <h2>개별적 노동관계 관리</h2>
+          <p>해고, 징계처분, 임금체불 등 근로자와 사용자 간 발생할 수 있는 다양한 법적 갈등을 세련되게 풀어나가며, 직장 내 괴롭힘 이슈에도 엄정한 솔루션을 매칭합니다.</p>
+          <a class="hero-slide-link" onclick="goPage('services','tab1')">자세히 보기 <span>&rarr;</span></a>
+        </div>
+      </div>
+    </div>
+    <div class="hero-slide">
+      <div class="hero-slide-bg" style="background-image:url('https://images.unsplash.com/photo-1758518732175-5d608ba3abdf?auto=format&fit=crop&w=1800&q=80')"></div>
+      <div class="hero-slide-overlay"></div>
+      <div class="hero-slide-content">
+        <div class="hero-slide-inner">
+          <div class="hero-slide-num"><b>04</b> / 07</div>
+          <div class="hero-slide-eyebrow">PRACTICE AREA 03</div>
+          <h2>집단적 노사관계 조율</h2>
+          <p>복수노조 체제하의 교섭창구단일화 대응, 단체교섭 전략 수립 및 대응, 파업 및 준법투쟁을 비롯한 집단 쟁의행위 위법성 진단 등 고도의 솔루션을 제공합니다.</p>
+          <a class="hero-slide-link" onclick="goPage('services','tab2')">자세히 보기 <span>&rarr;</span></a>
+        </div>
+      </div>
+    </div>
+    <div class="hero-slide">
+      <div class="hero-slide-bg" style="background-image:url('https://images.unsplash.com/photo-1589391886645-d51941baf7fb?auto=format&fit=crop&w=1800&q=80')"></div>
+      <div class="hero-slide-overlay"></div>
+      <div class="hero-slide-content">
+        <div class="hero-slide-inner">
+          <div class="hero-slide-num"><b>05</b> / 07</div>
+          <div class="hero-slide-eyebrow">PRACTICE AREA 04</div>
+          <h2>노동사건 법률 대리</h2>
+          <p>노동위원회 및 노동청 사건 발생 시, 체계적인 사실관계 분석을 바탕으로 최선의 결과를 도출 할 수 있는 합리적 대응 논리를 구축합니다.</p>
+          <a class="hero-slide-link" onclick="goPage('services','tab3')">자세히 보기 <span>&rarr;</span></a>
+        </div>
+      </div>
+    </div>
+    <div class="hero-slide">
+      <div class="hero-slide-bg" style="background-image:url('https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1800&q=80')"></div>
+      <div class="hero-slide-overlay"></div>
+      <div class="hero-slide-content">
+        <div class="hero-slide-inner">
+          <div class="hero-slide-num"><b>06</b> / 07</div>
+          <div class="hero-slide-eyebrow">PRACTICE AREA 05</div>
+          <h2>인사·임금 컨설팅</h2>
+          <p>통상임금 소송 리스크 축소 솔루션, 포괄임금제 개선 프로젝트, 직무급·성과급으로의 임금체계 개편 및 유연근무제 설계를 통해 HR 경쟁력을 극대화합니다.</p>
+          <a class="hero-slide-link" onclick="goPage('services','tab4')">자세히 보기 <span>&rarr;</span></a>
+        </div>
+      </div>
+    </div>
+    <div class="hero-slide">
+      <div class="hero-slide-bg" style="background-image:url('https://images.unsplash.com/photo-1542744173-8e7e53415bb0?auto=format&fit=crop&w=1800&q=80')"></div>
+      <div class="hero-slide-overlay"></div>
+      <div class="hero-slide-content">
+        <div class="hero-slide-inner">
+          <div class="hero-slide-num"><b>07</b> / 07</div>
+          <div class="hero-slide-eyebrow">PRACTICE AREA 06</div>
+          <h2>노동법률 교육 및 강의</h2>
+          <p>C-Level 및 인사담당자를 위한 리스크 관리 특강부터 임직원 대상 법정 의무 교육까지 최신 판례 가이드를 기반으로 한 맞춤 강좌를 진행합니다.</p>
+          <a class="hero-slide-link" onclick="goPage('services','tab5')">자세히 보기 <span>&rarr;</span></a>
+        </div>
+      </div>
+    </div>
+    <div class="hero-slider-controls">
+      <div class="hero-dots">
+        <button class="dot active" onclick="showHeroSlide(0)" aria-label="슬라이드 1"></button>
+        <button class="dot" onclick="showHeroSlide(1)" aria-label="슬라이드 2"></button>
+        <button class="dot" onclick="showHeroSlide(2)" aria-label="슬라이드 3"></button>
+        <button class="dot" onclick="showHeroSlide(3)" aria-label="슬라이드 4"></button>
+        <button class="dot" onclick="showHeroSlide(4)" aria-label="슬라이드 5"></button>
+        <button class="dot" onclick="showHeroSlide(5)" aria-label="슬라이드 6"></button>
+        <button class="dot" onclick="showHeroSlide(6)" aria-label="슬라이드 7"></button>
+      </div>
+      <div class="hero-arrows">
+        <button onclick="heroPrevSlide()" aria-label="이전 슬라이드">&larr;</button>
+        <button onclick="heroNextSlide()" aria-label="다음 슬라이드">&rarr;</button>
+      </div>
     </div>
   </div>
 
@@ -870,6 +988,7 @@ footer {
       <div class="cta-facts">
         <div class="cta-fact"><div class="cf-num">10+</div><div class="cf-label">Years<br>Experience</div></div>
         <div class="cta-fact"><div class="cf-num">1:1</div><div class="cf-label">Dedicated<br>Counsel</div></div>
+        <div class="cta-fact"><div class="cf-num">24H</div><div class="cf-label">Response<br>Window</div></div>
       </div>
     </div>
   </div>
@@ -1182,7 +1301,7 @@ footer {
     <div class="consult-wrap fade">
       <div class="consult-info">
         <h2>Legal Advisory Counsel</h2>
-        <p>본 사무소는 엄격한 기밀 유지 원칙을 바탕으로 철저하게 검증된 솔루션만을 제시합니다.</p>
+        <p>노동법률사무소 혁신은 엄격한 기밀 유지를 원칙으로 철저하게 검증된 노무·인사 솔루션만을 제시합니다.</p>
         <div class="contact-item">
           <div class="contact-icon"><svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.41a2 2 0 0 1 1.87-2.18h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.93a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg></div>
           <div><div class="contact-label">대표 유선전화</div><div class="contact-value">010-4587-4517</div></div>
@@ -1213,11 +1332,11 @@ footer {
           <div class="form-row">
             <label class="form-label">상담 지정 분야</label>
             <select class="form-input" name="상담분야">
-              <option>기업 자문 (일회성/정기자문 등)</option>
-              <option>개별적 노사관계 (해고/징계/괴롭힘 등)</option>
-              <option>집단적 노사관계 (복수노조/쟁의 등)</option>
-              <option>노동사건 대리 (노동위원회/노동청 등)</option>
-              <option>인사·임금 컨설팅 (임금개편/근로시간 등)</option>
+              <option>기업 자문 (정기/상시)</option>
+              <option>개별적 노동관계 (해고/징계/괴롭힘)</option>
+              <option>집단적 노사관계 (복수노조/쟁의)</option>
+              <option>노동사건 대리 (노동위원회/노동청)</option>
+              <option>인사·임금 컨설팅 (임금개편/근로시간)</option>
               <option>기타 법률 문의</option>
             </select>
           </div>
@@ -1225,7 +1344,7 @@ footer {
             <label class="form-label">개요 및 문의 내용</label>
             <textarea class="form-textarea" name="문의내용" placeholder="상담하고자 하시는 사안의 핵심 맥락을 간략히 기술해 주십시오. 구체적 사실은 대면 상담 시 완벽한 기밀 하에 진행됩니다." required></textarea>
           </div>
-          <button class="form-submit" type="submit">상담 신청 접수</button>
+          <button class="form-submit" type="submit">법률 상담 신청 접수</button>
           <div id="formMsg" style="margin-top:16px; font-size:14px; display:none;"></div>
         </form>
       </div>
@@ -1247,6 +1366,25 @@ footer {
 
 <!-- ===== SCRIPTS ===== -->
 <script>
+let heroSlideIdx = 0;
+let heroAutoTimer = null;
+function showHeroSlide(i) {
+  const slides = document.querySelectorAll('.hero-slide');
+  const dots = document.querySelectorAll('.hero-dots .dot');
+  if (!slides.length) return;
+  heroSlideIdx = (i + slides.length) % slides.length;
+  slides.forEach((s, idx) => s.classList.toggle('active', idx === heroSlideIdx));
+  dots.forEach((d, idx) => d.classList.toggle('active', idx === heroSlideIdx));
+  resetHeroAutoplay();
+}
+function heroNextSlide() { showHeroSlide(heroSlideIdx + 1); }
+function heroPrevSlide() { showHeroSlide(heroSlideIdx - 1); }
+function resetHeroAutoplay() {
+  if (heroAutoTimer) clearInterval(heroAutoTimer);
+  heroAutoTimer = setInterval(() => { showHeroSlide(heroSlideIdx + 1); }, 6500);
+}
+resetHeroAutoplay();
+
 function toggleMobileNav() {
   document.getElementById('navToggle').classList.toggle('open');
   document.getElementById('mobileNav').classList.toggle('open');
