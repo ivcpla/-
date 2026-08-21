@@ -218,10 +218,10 @@ nav.scrolled .nav-toggle span { background: var(--gd); }
 .hero-slide {
   position: absolute; inset: 0;
   display: flex; align-items: center;
-  opacity: 0; visibility: hidden; z-index: 0;
-  transition: opacity 1s ease;
+  opacity: 0; z-index: 0; pointer-events: none;
+  transition: opacity 1.2s ease;
 }
-.hero-slide.active { opacity: 1; visibility: visible; z-index: 1; }
+.hero-slide.active { opacity: 1; z-index: 1; pointer-events: auto; }
 .hero-slide-bg {
   position: absolute; inset: 0;
   background-size: cover; background-position: center;
