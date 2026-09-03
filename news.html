@@ -34,6 +34,13 @@
 .news-title a:hover { color: var(--gb); text-decoration: underline; }
 .news-comment { font-size: 14.5px; color: var(--tm); font-weight: 300; line-height: 1.75; padding-top: 14px; border-top: 1px dashed var(--border); }
 .news-comment b { color: var(--gb); font-weight: 700; }
+.pagination { display: flex; justify-content: center; align-items: center; gap: 8px; margin-top: 48px; flex-wrap: wrap; }
+.page-btn { min-width: 40px; height: 40px; padding: 0 8px; border: 1px solid var(--border); background: var(--white); color: var(--tm); font-size: 14px; font-weight: 500; cursor: pointer; }
+.page-btn:hover:not(.active) { border-color: var(--gb); color: var(--gb); }
+.page-btn.active { background: var(--gd); border-color: var(--gd); color: white; }
+.page-btn.page-nav { font-size: 12px; color: var(--tm); }
+.page-btn.page-nav:disabled { opacity: 0.35; cursor: default; }
+.page-btn.page-nav:disabled:hover { border-color: var(--border); color: var(--tm); }
 @media (max-width: 768px) {
   .news-item { padding: 24px 22px; }
   .news-title { font-size: 17px; }
@@ -50,8 +57,8 @@
   <div class="nav-menu">
     <a class="nav-item" href="index.html#about" style="text-decoration:none;">사무소 소개</a>
     <a class="nav-item" href="index.html#services" style="text-decoration:none;">업무분야</a>
-    <a class="nav-item" href="index.html#consult" style="text-decoration:none;">상담예약</a>
     <a class="nav-item active" id="nav-news" href="news.html" style="text-decoration:none;">노동 뉴스</a>
+    <a class="nav-item" href="index.html#consult" style="text-decoration:none;">상담예약</a>
   </div>
   <a class="nav-cta" href="index.html#consult" style="text-decoration:none;">Consultation</a>
   <button class="nav-toggle" id="navToggle" onclick="toggleMobileNav()" aria-label="메뉴 열기">
@@ -66,10 +73,10 @@
     <a class="mnav-title" href="index.html#services" style="text-decoration:none; color:inherit;">업무분야</a>
   </div>
   <div class="mobile-nav-item">
-    <a class="mnav-title" href="index.html#consult" style="text-decoration:none; color:inherit;">상담예약</a>
+    <a class="mnav-title" href="news.html" style="text-decoration:none; color:inherit;">노동 뉴스</a>
   </div>
   <div class="mobile-nav-item">
-    <a class="mnav-title" href="news.html" style="text-decoration:none; color:inherit;">노동 뉴스</a>
+    <a class="mnav-title" href="index.html#consult" style="text-decoration:none; color:inherit;">상담예약</a>
   </div>
   <div class="mobile-cta" onclick="location.href='index.html#consult'">Consultation</div>
 </div>
@@ -97,9 +104,27 @@
       </article>
 
       <article class="news-item">
+        <div class="news-meta"><span class="news-date">2026.08.28</span><span class="news-source">서울신문</span></div>
+        <h2 class="news-title"><a href="https://www.seoul.co.kr/news/politics/2026/08/28/20260828500068" target="_blank" rel="noopener">"노란봉투법 쟁의 기준, 시행령보다 시행지침으로 즉시 적용"</a></h2>
+        <p class="news-comment"><b>실무 코멘트.</b> 개정 노조법상 노동쟁의 판단 기준을 정식 시행령이 아닌 시행지침으로 우선 적용하기로 하면서, 현장 적용 시점이 예상보다 빨라질 전망입니다. 하청업체를 사용하는 원청 사업장이라면 '사용자성' 판단 기준 변화에 대비한 교섭 대응 매뉴얼을 서둘러 준비해두실 필요가 있습니다.</p>
+      </article>
+
+      <article class="news-item">
         <div class="news-meta"><span class="news-date">2026.08.27</span><span class="news-source">대한민국 정책브리핑</span></div>
         <h2 class="news-title"><a href="https://www.korea.kr/news/policyNewsView.do?newsId=148970585" target="_blank" rel="noopener">갑작스러운 돌봄엔 '단기 육아휴직'…임신·출산 배우자 지원도 확대</a></h2>
         <p class="news-comment"><b>실무 코멘트.</b> 9월 18일부터 배우자 출산휴가를 출산 전(예정일 50일 전)부터 쓸 수 있게 되고, 배우자 유산·사산휴가(5일, 최초 3일 유급)도 신설됩니다. 취업규칙·인사규정에 관련 조항이 없는 사업장은 시행일 전에 미리 반영해두어야 현장 혼선을 줄일 수 있습니다.</p>
+      </article>
+
+      <article class="news-item">
+        <div class="news-meta"><span class="news-date">2026.08.12</span><span class="news-source">뉴스1</span></div>
+        <h2 class="news-title"><a href="https://www.news1.kr/economy/employment-labor/6254543" target="_blank" rel="noopener">정년연장 하반기 입법 시동…'고용연장·청년채용' 세대 상생 시험대</a></h2>
+        <p class="news-comment"><b>실무 코멘트.</b> 정년연장 법안은 아직 국회 논의 단계지만, 시행 시점과 임금체계 연동 방식에 따라 사업장의 인건비·인사관리 부담이 크게 달라집니다. 법이 확정되기 전이라도 임금피크제, 정년 후 재고용 규정 등을 미리 점검해두시길 권해드립니다.</p>
+      </article>
+
+      <article class="news-item">
+        <div class="news-meta"><span class="news-date">2026.08.05</span><span class="news-source">위키트리</span></div>
+        <h2 class="news-title"><a href="https://www.wikitree.co.kr/articles/1150496" target="_blank" rel="noopener">2027년 최저임금, 시간당 1만700원으로 확정 고시</a></h2>
+        <p class="news-comment"><b>실무 코멘트.</b> 2027년 최저임금이 전년 대비 3.7% 오른 시간당 10,700원(월 환산 223만 6,300원)으로 확정됐습니다. 정기상여금·복리후생비 등 최저임금 산입범위까지 함께 재점검하지 않으면, 급여를 올렸다고 생각했는데도 최저임금 위반이 되는 경우가 실무에서 자주 발생합니다.</p>
       </article>
 
       <article class="news-item">
@@ -110,6 +135,8 @@
 
     </div>
     <!-- ▲▲▲ 새 소식 추가는 여기까지 ▲▲▲ -->
+
+    <div class="pagination" id="newsPagination"></div>
 
   </div>
   </div>
@@ -140,6 +167,63 @@ function toggleMobileNav() {
   document.getElementById('navToggle').classList.toggle('open');
   document.getElementById('mobileNav').classList.toggle('open');
 }
+
+// ===== 뉴스 페이지네이션 (한 페이지에 4개씩) =====
+(function () {
+  const PER_PAGE = 4;
+  const items = Array.from(document.querySelectorAll('.news-item'));
+  const pagination = document.getElementById('newsPagination');
+  const totalPages = Math.ceil(items.length / PER_PAGE);
+  let currentPage = 1;
+
+  function render(page) {
+    currentPage = page;
+    items.forEach((item, idx) => {
+      const itemPage = Math.floor(idx / PER_PAGE) + 1;
+      item.style.display = (itemPage === page) ? '' : 'none';
+    });
+    pagination.querySelectorAll('.page-btn[data-page]').forEach(btn => {
+      btn.classList.toggle('active', parseInt(btn.dataset.page, 10) === page);
+    });
+    const prevBtn = pagination.querySelector('[data-nav="prev"]');
+    const nextBtn = pagination.querySelector('[data-nav="next"]');
+    if (prevBtn) prevBtn.disabled = (page === 1);
+    if (nextBtn) nextBtn.disabled = (page === totalPages);
+  }
+
+  function goTo(page) {
+    if (page < 1 || page > totalPages) return;
+    render(page);
+    document.querySelector('.news-intro').scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+
+  if (totalPages > 1) {
+    const prevBtn = document.createElement('button');
+    prevBtn.className = 'page-btn page-nav';
+    prevBtn.dataset.nav = 'prev';
+    prevBtn.textContent = '이전';
+    prevBtn.onclick = () => goTo(currentPage - 1);
+    pagination.appendChild(prevBtn);
+
+    for (let p = 1; p <= totalPages; p++) {
+      const btn = document.createElement('button');
+      btn.className = 'page-btn';
+      btn.dataset.page = p;
+      btn.textContent = p;
+      btn.onclick = () => goTo(p);
+      pagination.appendChild(btn);
+    }
+
+    const nextBtn = document.createElement('button');
+    nextBtn.className = 'page-btn page-nav';
+    nextBtn.dataset.nav = 'next';
+    nextBtn.textContent = '다음';
+    nextBtn.onclick = () => goTo(currentPage + 1);
+    pagination.appendChild(nextBtn);
+  }
+
+  render(1);
+})();
 </script>
 </body>
 </html>
