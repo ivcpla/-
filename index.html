@@ -19,9 +19,9 @@
 <meta property="og:locale" content="ko_KR">
 
 <!-- 네이버 서치어드바이저 소유 확인용 (발급받은 코드로 교체) -->
-<meta name="naver-site-verification" content="navercc060034b6c3607f30b0b36506287c46.html">
+<meta name="naver-site-verification" content="navercc060034b6c3607f30b0b36506287c46">
 <!-- 구글 서치콘솔 소유 확인용 (발급받은 코드로 교체) -->
-<meta name="google-site-verification" content="google23cb470db3ad2abb.html">
+<meta name="google-site-verification" content="google23cb470db3ad2abb">
 
 <!-- 구조화 데이터: 지도/지식패널 노출에 도움 -->
 <script type="application/ld+json">
@@ -174,8 +174,8 @@
         <a onclick="goPage('services','tab5')">노동교육·강의</a>
       </div>
     </div>
-    <div class="nav-item" id="nav-consult" onclick="goPage('consult')">상담예약</div>
     <a class="nav-item" id="nav-news" href="news.html" style="text-decoration:none;">노동 뉴스</a>
+    <div class="nav-item" id="nav-consult" onclick="goPage('consult')">상담예약</div>
   </div>
   <div class="nav-cta" onclick="goPage('consult')">Consultation</div>
   <button class="nav-toggle" id="navToggle" onclick="toggleMobileNav()" aria-label="메뉴 열기">
@@ -206,10 +206,10 @@
     </div>
   </div>
   <div class="mobile-nav-item">
-    <div class="mnav-title" onclick="mobileGoPage('consult')">상담예약</div>
+    <a class="mnav-title" href="news.html" style="text-decoration:none; color:inherit;">노동 뉴스</a>
   </div>
   <div class="mobile-nav-item">
-    <a class="mnav-title" href="news.html" style="text-decoration:none; color:inherit;">노동 뉴스</a>
+    <div class="mnav-title" onclick="mobileGoPage('consult')">상담예약</div>
   </div>
   <div class="mobile-cta" onclick="mobileGoPage('consult')">Consultation</div>
 </div>
