@@ -37,17 +37,17 @@
 .blog-desc { font-size: 14.5px; color: var(--tm); font-weight: 300; line-height: 1.75; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
 .blog-state { padding: 60px 20px; text-align: center; color: var(--tm); font-size: 15px; font-weight: 300; }
 .blog-state a { color: var(--gb); font-weight: 500; }
+  .blog-pagination { display:flex; justify-content:center; align-items:center; gap:8px; margin-top:40px; flex-wrap:wrap; }
+  .page-btn { min-width:38px; height:38px; padding:0 12px; border:1px solid var(--border); background:var(--white); color:var(--tm); cursor:pointer; font-size:14px; }
+  .page-btn:hover, .page-btn.active { background:var(--gd); color:#fff; border-color:var(--gd); }
+  .page-btn:disabled { opacity:.4; cursor:default; }
 .blog-more-wrap { text-align: center; margin-top: 44px; }
 .blog-more-btn { display: inline-block; padding: 14px 36px; border: 1px solid var(--gd); color: var(--gd); font-size: 14px; letter-spacing: 0.5px; text-decoration: none; transition: 0.2s; }
 .blog-more-btn:hover { background: var(--gd); color: #fff; }
-.blog-section-title { font-size: 22px; font-weight: 700; margin: 70px 0 14px; color: var(--gd); }
-.blog-archive-note { font-size: 14px; color: var(--tm); font-weight: 300; margin-bottom: 28px; }
-.archive-list { display: flex; flex-direction: column; gap: 0; border-top: 1px solid var(--border); }
-.archive-item { display: flex; justify-content: space-between; align-items: baseline; gap: 16px; padding: 16px 6px; border-bottom: 1px solid var(--border); }
-.archive-item a { color: var(--tm); text-decoration: none; font-size: 15px; line-height: 1.5; }
-.archive-item a:hover { color: var(--gb); text-decoration: underline; }
-.archive-date { flex: 0 0 auto; font-size: 13px; color: var(--ts); white-space: nowrap; }
-.archive-pagination { display: flex; justify-content: center; align-items: center; gap: 8px; margin-top: 32px; flex-wrap: wrap; }
+
+.blog-thumb-link { flex: 0 0 220px; width: 220px; height: 145px; display: block; overflow: hidden; background: var(--gp); }
+.blog-item-thumb { width: 100%; height: 100%; object-fit: cover; display: block; }
+.blog-item-thumb-empty { display:flex; align-items:center; justify-content:center; color:var(--ts); font-size:13px; letter-spacing:1px; }
 @media (max-width: 640px) {
   .blog-item { flex-direction: column; padding: 22px; }
   .blog-item-thumb { width: 100%; height: 180px; }
@@ -97,14 +97,14 @@
 <div class="page-hero">
   <div class="breadcrumb">홈 › 블로그</div>
   <h1>블로그</h1>
-  <p>대표 노무사가 운영하는 네이버 블로그에 직접 작성한 노동법·인사노무 실무 칼럼입니다.</p>
+  <p>대표 공인노무사가 네이버 블로그에 직접 작성한 노동법·인사노무 실무 칼럼입니다. 새 글을 올리면 이 페이지에도 자동으로 반영됩니다.</p>
 </div>
 
 <div class="sec">
   <div class="center-wrap ratio-2-6-2">
   <div class="center-col">
 
-   
+    <p class="blog-intro">아래 목록은 네이버 블로그(<a href="https://blog.naver.com/ivcpla" target="_blank" rel="noopener">blog.naver.com/ivcpla</a>)의 최신 글을 자동으로 불러온 것입니다. 제목을 클릭하면 네이버 블로그 원문으로 이동합니다.</p>
 
     <div class="blog-list" id="blogList">
       <div class="blog-state" id="blogLoading">블로그 글을 불러오는 중입니다...</div>
@@ -114,10 +114,9 @@
       <a class="blog-more-btn" href="https://blog.naver.com/ivcpla" target="_blank" rel="noopener">네이버 블로그에서 전체 글 보기</a>
     </div>
 
-    <h2 class="blog-section-title">지난 글 아카이브</h2>
-    <p class="blog-archive-note">그동안 작성하신 블로그 글 목록입니다. 제목을 클릭하면 네이버 검색을 통해 해당 글로 이동합니다.</p>
-    <div class="archive-list" id="archiveList"></div>
-    <div class="archive-pagination" id="archivePagination"></div>
+    <div class="blog-pagination" id="blogPagination"></div>
+
+    </div>
 
   </div>
   </div>
@@ -159,7 +158,9 @@ function toggleMobileNav() {
 const NAVER_BLOG_ID = 'ivcpla';
 const RSS_URL = `https://rss.blog.naver.com/${NAVER_BLOG_ID}.xml`;
 const RSS_TO_JSON_ENDPOINT = `https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(RSS_URL)}`;
-const MAX_ITEMS = 10;
+const BLOG_PER_PAGE = 4;
+let blogItems = [];
+let blogCurrentPage = 1;
 
 function formatDate(pubDate) {
   const d = new Date(pubDate);
@@ -180,36 +181,30 @@ function extractFirstImage(html) {
   const tmp = document.createElement('div');
   tmp.innerHTML = html || '';
   const img = tmp.querySelector('img');
-  return img ? img.src : '';
+  return img ? (img.getAttribute('src') || img.getAttribute('data-src') || '') : '';
 }
 
-function renderBlogItems(items) {
-  const list = document.getElementById('blogList');
-  list.innerHTML = '';
-
-  if (!items || items.length === 0) {
-    list.innerHTML = `<div class="blog-state">불러올 블로그 글이 없습니다. <a href="https://blog.naver.com/${NAVER_BLOG_ID}" target="_blank" rel="noopener">네이버 블로그 바로가기</a></div>`;
-    return;
-  }
-
-  items.slice(0, MAX_ITEMS).forEach(item => {
-    const thumb = item.thumbnail || extractFirstImage(item.description || item.content);
-    const desc = stripHtml(item.description || item.content).slice(0, 120);
-    const date = formatDate(item.pubDate);
-
-    const el = document.createElement('article');
-    el.className = 'blog-item';
-    el.innerHTML = `
-      ${thumb ? `<img class="blog-item-thumb" src="${thumb}" alt="" loading="lazy" onerror="this.style.display='none'">` : ''}
-      <div class="blog-item-body">
-        <div class="blog-meta"><span class="blog-date">${date}</span><span>노동법률사무소 혁신 블로그</span></div>
-        <h2 class="blog-title"><a href="${item.link}" target="_blank" rel="noopener">${item.title}</a></h2>
-        <p class="blog-desc">${desc}${desc.length >= 120 ? '…' : ''}</p>
-      </div>
-    `;
-    list.appendChild(el);
-  });
+function extractRepresentativeImage(item) {
+  const mediaThumb = item.media && (item.media.thumbnail || item.media.content || item.media.url);
+  const enclosure = item.enclosure && (item.enclosure.link || item.enclosure.url);
+  return item.thumbnail || mediaThumb || enclosure ||
+         extractFirstImage(item.description || item.content || '') || '';
 }
+
+function renderBlogItems(items) { blogItems = items || []; renderBlogPage(1); }
+function renderBlogPage(page) {
+ const list=document.getElementById('blogList'), pager=document.getElementById('blogPagination');
+ const totalPages=Math.max(1,Math.ceil(blogItems.length/BLOG_PER_PAGE)); blogCurrentPage=page; list.innerHTML='';
+ if(!blogItems.length){list.innerHTML=`<div class="blog-state">불러올 블로그 글이 없습니다. <a href="https://blog.naver.com/${NAVER_BLOG_ID}" target="_blank" rel="noopener">네이버 블로그 바로가기</a></div>`;pager.innerHTML='';return;}
+ blogItems.slice((page-1)*BLOG_PER_PAGE,page*BLOG_PER_PAGE).forEach(item=>{
+   const thumb=extractRepresentativeImage(item),desc=stripHtml(item.description||item.content).slice(0,120),date=formatDate(item.pubDate);
+   const el=document.createElement('article');
+   el.className='blog-item';
+   el.innerHTML=`<a class="blog-thumb-link" href="${item.link}" target="_blank" rel="noopener" aria-label="${item.title}">${thumb ? `<img class="blog-item-thumb" src="${thumb}" alt="${item.title}" loading="lazy" onerror="this.closest('.blog-thumb-link').style.display='none'">` : `<div class="blog-item-thumb blog-item-thumb-empty">BLOG</div>`}</a><div class="blog-item-body"><div class="blog-meta"><span class="blog-date">${date}</span><span>노동법률사무소 혁신 블로그</span></div><h2 class="blog-title"><a href="${item.link}" target="_blank" rel="noopener">${item.title}</a></h2><p class="blog-desc">${desc}${desc.length>=120?'…':''}</p></div>`;
+   list.appendChild(el);
+ });
+ pager.innerHTML=''; if(totalPages>1){const prev=document.createElement('button');prev.className='page-btn';prev.textContent='이전';prev.disabled=page===1;prev.onclick=()=>goToBlogPage(page-1);pager.appendChild(prev);for(let p=1;p<=totalPages;p++){const btn=document.createElement('button');btn.className='page-btn'+(p===page?' active':'');btn.textContent=p;btn.onclick=()=>goToBlogPage(p);pager.appendChild(btn);}const next=document.createElement('button');next.className='page-btn';next.textContent='다음';next.disabled=page===totalPages;next.onclick=()=>goToBlogPage(page+1);pager.appendChild(next);}}
+function goToBlogPage(page){const totalPages=Math.ceil(blogItems.length/BLOG_PER_PAGE);if(page<1||page>totalPages)return;renderBlogPage(page);document.getElementById('blogList').scrollIntoView({behavior:'smooth',block:'start'});}
 
 function renderBlogError() {
   const list = document.getElementById('blogList');
@@ -235,104 +230,7 @@ fetch(RSS_TO_JSON_ENDPOINT)
     renderBlogError();
   });
 
-// ===== 지난 글 아카이브 (정확한 원문 링크가 없어, 블로그 내 검색으로 연결) =====
-// 나중에 정확한 게시글 URL을 알려주시면 title 옆에 url을 추가해 직접 링크로 바꿀 수 있습니다.
-const BLOG_ARCHIVE = [
-  { title: '휴게시간 중 근무했다면 임금체불에 해당 할 수 있습니다. (1)', date: '2026.09.16' },
-  { title: '삼성전자 월세 부당이득 사건, 후회되지만 사직서 제출은 돌이킬 수 없습니다.', date: '2026.09.09' },
-  { title: '실업급여 부정수급, 쉽게 넘어 갈 일이 아닙니다.', date: '2026.09.01' },
-  { title: '배달기사도 근로자라면 퇴직금 등이 추가 발생합니다.', date: '2026.08.26' },
-  { title: '학원강사, 헬스트레이너 등 프리랜서의 근로자성 진정 문제, 중요합니다', date: '2026.08.26' },
-  { title: '공공기관 비정규직 징계 근로감독! 반드시 대비해야 합니다.', date: '2026.08.19' },
-  { title: '계약갱신기대권? 정규직전환기대권? 기대권에 관한 모든 것을 알려', date: '2026.08.04' },
-  { title: '육아기 근로시간 단축, 꼭 보고 가세요!', date: '2026.08.04' },
-  { title: '주휴수당, 정확히 계산하고 있나요?', date: '2026.08.03' },
-  { title: '부당노동행위, 사업주와 노동조합 모두 주의해야합니다. (1)', date: '2026.08.03' },
-  { title: '기간제 근로자 사용, 사장님들 이건 꼭 알고 가셔야 합니다.', date: '2026.07.30' },
-  { title: '근로계약서 작성, 반드시 확인하셔야 합니다!', date: '2026.07.29' },
-  { title: '징계위원회 운영 시 유의사항 총 정리(절차적 정당성의 중요성)', date: '2026.07.27' },
-  { title: '연차촉진제도, 사용자와 근로자 모두 꼼꼼히 챙겨야 합니다.', date: '2026.07.24' },
-  { title: '노동조합 설립, 근로자와 사용자 모두에게 중요한 사안입니다.', date: '2026.07.22' },
-  { title: '복수노동조합 사업장에서 반드시 챙겨야 할 교섭창구단일화 절차!', date: '2026.07.22' },
-  { title: '노란봉투법(개정노동조합법) 중요사항 및 노무자문 필요성', date: '2026.07.21' },
-  { title: '육아휴직 A to Z까지, 육아휴직의 모든 것 (2)', date: '2026.07.21' },
-  { title: '해고 서면통지 위반은 부당해고, 대응은 사건 전문 노무사와 함께!', date: '2026.07.20' },
-  { title: '2027년 최저임금 10,700원!', date: '2026.07.16' },
-  { title: '노동감독관 직무집행법 알림', date: '2026.07.16' },
-  { title: '기간제, 파견근로자 결원대체 관련 행정해석 변경(2026.7.1. 시행)', date: '2026.07.14' },
-  { title: '배달앱 라이더의 근로자성 및 해고 여부에 관한 고등법원 사례 (10)', date: '2026.07.13' },
-  { title: '포괄임금 오남용 감독 관련 주의사항', date: '2026.07.13' },
-  { title: '최신 취업규칙 불이익 변경 판례 (1)', date: '2026.07.06' }
-];
-const ARCHIVE_PER_PAGE = 10;
 
-function archiveSearchUrl(title) {
-  const shortTitle = title.replace(/\s*\(\d+\)\s*$/, '').slice(0, 40);
-  return `https://search.naver.com/search.naver?query=${encodeURIComponent('site:blog.naver.com/ivcpla ' + shortTitle)}`;
-}
-
-(function initArchive() {
-  const listEl = document.getElementById('archiveList');
-  const pagerEl = document.getElementById('archivePagination');
-  const totalPages = Math.ceil(BLOG_ARCHIVE.length / ARCHIVE_PER_PAGE);
-  let currentPage = 1;
-
-  function renderPage(page) {
-    currentPage = page;
-    listEl.innerHTML = '';
-    const start = (page - 1) * ARCHIVE_PER_PAGE;
-    const pageItems = BLOG_ARCHIVE.slice(start, start + ARCHIVE_PER_PAGE);
-    pageItems.forEach(item => {
-      const row = document.createElement('div');
-      row.className = 'archive-item';
-      row.innerHTML = `
-        <a href="${archiveSearchUrl(item.title)}" target="_blank" rel="noopener">${item.title}</a>
-        <span class="archive-date">${item.date}</span>
-      `;
-      listEl.appendChild(row);
-    });
-    pagerEl.querySelectorAll('.page-btn[data-page]').forEach(btn => {
-      btn.classList.toggle('active', parseInt(btn.dataset.page, 10) === page);
-    });
-    const prevBtn = pagerEl.querySelector('[data-nav="prev"]');
-    const nextBtn = pagerEl.querySelector('[data-nav="next"]');
-    if (prevBtn) prevBtn.disabled = (page === 1);
-    if (nextBtn) nextBtn.disabled = (page === totalPages);
-  }
-
-  function goTo(page) {
-    if (page < 1 || page > totalPages) return;
-    renderPage(page);
-    document.querySelector('.blog-section-title').scrollIntoView({ behavior: 'smooth', block: 'start' });
-  }
-
-  if (totalPages > 1) {
-    const prevBtn = document.createElement('button');
-    prevBtn.className = 'page-btn page-nav';
-    prevBtn.dataset.nav = 'prev';
-    prevBtn.textContent = '이전';
-    prevBtn.onclick = () => goTo(currentPage - 1);
-    pagerEl.appendChild(prevBtn);
-
-    for (let p = 1; p <= totalPages; p++) {
-      const btn = document.createElement('button');
-      btn.className = 'page-btn';
-      btn.dataset.page = p;
-      btn.textContent = p;
-      btn.onclick = () => goTo(p);
-      pagerEl.appendChild(btn);
-    }
-
-    const nextBtn = document.createElement('button');
-    nextBtn.className = 'page-btn page-nav';
-    nextBtn.dataset.nav = 'next';
-    nextBtn.textContent = '다음';
-    nextBtn.onclick = () => goTo(currentPage + 1);
-    pagerEl.appendChild(nextBtn);
-  }
-
-  renderPage(1);
-})();
 </script>
 </body>
 </html>
