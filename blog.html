@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>블로그 | 노동법률사무소 혁신 - 노동법 실무 칼럼</title>
+<meta name="description" content="노동법률사무소 혁신 대표 공인노무사가 네이버 블로그에 직접 작성하는 임금체불, 직장 내 괴롭힘, 노동위원회, 인사노무 실무 칼럼을 모아봅니다.">
+<meta name="keywords" content="노동법률사무소 혁신 블로그, 부천 노무사 블로그, 임금체불 칼럼, 직장 내 괴롭힘 칼럼, 노동위원회 칼럼, 인사노무 컨설팅">
+<meta name="robots" content="index, follow">
+<meta name="author" content="노동법률사무소 혁신">
+<link rel="canonical" href="https://ivlabor.co.kr/blog.html">
+
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="노동법률사무소 혁신">
+<meta property="og:title" content="블로그 | 노동법률사무소 혁신">
+<meta property="og:description" content="대표 노무사가 네이버 블로그에 직접 작성하는 노동법·인사노무 실무 칼럼 모음입니다.">
+<meta property="og:url" content="https://ivlabor.co.kr/blog.html">
+<meta property="og:locale" content="ko_KR">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;800&family=Noto+Serif+KR:wght@400;500;600;700&family=Cinzel:wght@500;700&family=Nanum+Pen+Script&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/style.css">
+
+<style>
+/* ===== BLOG PAGE 전용 (news.html의 news-item 스타일과 톤을 맞춤) ===== */
+.blog-intro { font-size: 15px; color: var(--tm); font-weight: 300; margin-bottom: 50px; }
+.blog-intro a { color: var(--gb); text-decoration: underline; }
+.blog-list { display: flex; flex-direction: column; gap: 28px; }
+.blog-item { border: 1px solid var(--border); padding: 32px 36px; background: var(--white); display: flex; gap: 24px; }
+.blog-item-thumb { flex: 0 0 160px; width: 160px; height: 110px; object-fit: cover; background: var(--gp); }
+.blog-item-body { flex: 1; min-width: 0; }
+.blog-meta { display: flex; gap: 14px; align-items: center; margin-bottom: 12px; font-size: 13px; color: var(--ts); }
+.blog-date { font-weight: 700; color: var(--gb); }
+.blog-title { font-size: 19px; font-weight: 700; margin-bottom: 10px; line-height: 1.5; }
+.blog-title a { color: var(--gd); text-decoration: none; }
+.blog-title a:hover { color: var(--gb); text-decoration: underline; }
+.blog-desc { font-size: 14.5px; color: var(--tm); font-weight: 300; line-height: 1.75; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+.blog-state { padding: 60px 20px; text-align: center; color: var(--tm); font-size: 15px; font-weight: 300; }
+.blog-state a { color: var(--gb); font-weight: 500; }
+.blog-more-wrap { text-align: center; margin-top: 44px; }
+.blog-more-btn { display: inline-block; padding: 14px 36px; border: 1px solid var(--gd); color: var(--gd); font-size: 14px; letter-spacing: 0.5px; text-decoration: none; transition: 0.2s; }
+.blog-more-btn:hover { background: var(--gd); color: #fff; }
+.blog-section-title { font-size: 22px; font-weight: 700; margin: 70px 0 14px; color: var(--gd); }
+.blog-archive-note { font-size: 14px; color: var(--tm); font-weight: 300; margin-bottom: 28px; }
+.archive-list { display: flex; flex-direction: column; gap: 0; border-top: 1px solid var(--border); }
+.archive-item { display: flex; justify-content: space-between; align-items: baseline; gap: 16px; padding: 16px 6px; border-bottom: 1px solid var(--border); }
+.archive-item a { color: var(--tm); text-decoration: none; font-size: 15px; line-height: 1.5; }
+.archive-item a:hover { color: var(--gb); text-decoration: underline; }
+.archive-date { flex: 0 0 auto; font-size: 13px; color: var(--ts); white-space: nowrap; }
+.archive-pagination { display: flex; justify-content: center; align-items: center; gap: 8px; margin-top: 32px; flex-wrap: wrap; }
+@media (max-width: 640px) {
+  .blog-item { flex-direction: column; padding: 22px; }
+  .blog-item-thumb { width: 100%; height: 180px; }
+  .blog-title { font-size: 17px; }
+}
+</style>
+</head>
+<body>
+
+<!-- ===== NAV ===== -->
+<nav>
+  <a class="nav-logo" href="index.html" style="text-decoration:none;">
+    <span class="nav-logo-text">노동법률사무소 혁신</span>
+  </a>
+  <div class="nav-menu">
+    <a class="nav-item" href="index.html#about" style="text-decoration:none;">사무소 소개</a>
+    <a class="nav-item" href="index.html#services" style="text-decoration:none;">업무분야</a>
+    <a class="nav-item" id="nav-news" href="news.html" style="text-decoration:none;">노동 뉴스</a>
+    <a class="nav-item active" id="nav-blog" href="blog.html" style="text-decoration:none;">블로그</a>
+    <a class="nav-item" href="index.html#consult" style="text-decoration:none;">상담예약</a>
+  </div>
+  <a class="nav-cta" href="index.html#consult" style="text-decoration:none;">Consultation</a>
+  <button class="nav-toggle" id="navToggle" onclick="toggleMobileNav()" aria-label="메뉴 열기">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+<div class="mobile-nav" id="mobileNav">
+  <div class="mobile-nav-item">
+    <a class="mnav-title" href="index.html#about" style="text-decoration:none; color:inherit;">사무소 소개</a>
+  </div>
+  <div class="mobile-nav-item">
+    <a class="mnav-title" href="index.html#services" style="text-decoration:none; color:inherit;">업무분야</a>
+  </div>
+  <div class="mobile-nav-item">
+    <a class="mnav-title" href="news.html" style="text-decoration:none; color:inherit;">노동 뉴스</a>
+  </div>
+  <div class="mobile-nav-item">
+    <a class="mnav-title" href="blog.html" style="text-decoration:none; color:inherit;">블로그</a>
+  </div>
+  <div class="mobile-nav-item">
+    <a class="mnav-title" href="index.html#consult" style="text-decoration:none; color:inherit;">상담예약</a>
+  </div>
+  <div class="mobile-cta" onclick="location.href='index.html#consult'">Consultation</div>
+</div>
+
+<!-- ===== BLOG PAGE ===== -->
+<div class="page-hero">
+  <div class="breadcrumb">홈 › 블로그</div>
+  <h1>블로그</h1>
+  <p>대표 공인노무사가 네이버 블로그에 직접 작성한 노동법·인사노무 실무 칼럼입니다. 새 글을 올리면 이 페이지에도 자동으로 반영됩니다.</p>
+</div>
+
+<div class="sec">
+  <div class="center-wrap ratio-2-6-2">
+  <div class="center-col">
+
+    <p class="blog-intro">아래 목록은 네이버 블로그(<a href="https://blog.naver.com/ivcpla" target="_blank" rel="noopener">blog.naver.com/ivcpla</a>)의 최신 글을 자동으로 불러온 것입니다. 제목을 클릭하면 네이버 블로그 원문으로 이동합니다.</p>
+
+    <div class="blog-list" id="blogList">
+      <div class="blog-state" id="blogLoading">블로그 글을 불러오는 중입니다...</div>
+    </div>
+
+    <div class="blog-more-wrap">
+      <a class="blog-more-btn" href="https://blog.naver.com/ivcpla" target="_blank" rel="noopener">네이버 블로그에서 전체 글 보기</a>
+    </div>
+
+    <h2 class="blog-section-title">지난 글 아카이브</h2>
+    <p class="blog-archive-note">그동안 작성하신 블로그 글 목록입니다. 제목을 클릭하면 네이버 검색을 통해 해당 글로 이동합니다.</p>
+    <div class="archive-list" id="archiveList"></div>
+    <div class="archive-pagination" id="archivePagination"></div>
+
+  </div>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-brand"><div class="fn">노동법률사무소 혁신</div><p>개별적·집단적 노동관계 전문 스페셜리스트</p></div>
+  <div class="footer-info">
+    <div><span>TEL</span> &nbsp;010-4587-4517</div>
+    <div><span>E-MAIL</span> &nbsp;ivcpla@naver.com</div>
+    <div><span>ADDRESS</span> &nbsp;경기 부천시 중동로254번길90 워크리움 6F 6147호</div>
+    <div><span>사업자등록번호</span> &nbsp;591-74-00661</div>
+  </div>
+  <div class="footer-copy">Copyright © 노동법률사무소 혁신. All Rights Reserved.</div>
+</footer>
+
+<script>
+function updateNavScrolled() {
+  const nav = document.querySelector('nav');
+  if (window.scrollY > 40) nav.classList.add('scrolled');
+  else nav.classList.remove('scrolled');
+}
+window.addEventListener('scroll', updateNavScrolled);
+window.addEventListener('resize', updateNavScrolled);
+updateNavScrolled();
+
+function toggleMobileNav() {
+  document.getElementById('navToggle').classList.toggle('open');
+  document.getElementById('mobileNav').classList.toggle('open');
+}
+
+// ===== 네이버 블로그 자동 연동 =====
+// 네이버 블로그는 https://rss.blog.naver.com/{블로그ID}.xml 형태로 RSS 피드를 제공합니다.
+// 브라우저(JS)에서 네이버 서버에 직접 요청하면 CORS 정책에 막히므로,
+// 무료 RSS→JSON 변환 프록시(rss2json.com)를 한 단계 거쳐서 가져옵니다.
+// ⚠️ 이 프록시는 무료 서비스이므로 사용량이 몰리거나 서비스가 점검 중이면
+//    일시적으로 글이 안 보일 수 있습니다. 이 경우 하단 "네이버 블로그에서 전체 글 보기" 버튼으로
+//    누구나 원문을 볼 수 있으니 서비스에 지장은 없습니다.
+const NAVER_BLOG_ID = 'ivcpla';
+const RSS_URL = `https://rss.blog.naver.com/${NAVER_BLOG_ID}.xml`;
+const RSS_TO_JSON_ENDPOINT = `https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(RSS_URL)}`;
+const MAX_ITEMS = 10;
+
+function formatDate(pubDate) {
+  const d = new Date(pubDate);
+  if (isNaN(d.getTime())) return '';
+  const yyyy = d.getFullYear();
+  const mm = String(d.getMonth() + 1).padStart(2, '0');
+  const dd = String(d.getDate()).padStart(2, '0');
+  return `${yyyy}.${mm}.${dd}`;
+}
+
+function stripHtml(html) {
+  const tmp = document.createElement('div');
+  tmp.innerHTML = html || '';
+  return (tmp.textContent || tmp.innerText || '').trim();
+}
+
+function extractFirstImage(html) {
+  const tmp = document.createElement('div');
+  tmp.innerHTML = html || '';
+  const img = tmp.querySelector('img');
+  return img ? img.src : '';
+}
+
+function renderBlogItems(items) {
+  const list = document.getElementById('blogList');
+  list.innerHTML = '';
+
+  if (!items || items.length === 0) {
+    list.innerHTML = `<div class="blog-state">불러올 블로그 글이 없습니다. <a href="https://blog.naver.com/${NAVER_BLOG_ID}" target="_blank" rel="noopener">네이버 블로그 바로가기</a></div>`;
+    return;
+  }
+
+  items.slice(0, MAX_ITEMS).forEach(item => {
+    const thumb = item.thumbnail || extractFirstImage(item.description || item.content);
+    const desc = stripHtml(item.description || item.content).slice(0, 120);
+    const date = formatDate(item.pubDate);
+
+    const el = document.createElement('article');
+    el.className = 'blog-item';
+    el.innerHTML = `
+      ${thumb ? `<img class="blog-item-thumb" src="${thumb}" alt="" loading="lazy" onerror="this.style.display='none'">` : ''}
+      <div class="blog-item-body">
+        <div class="blog-meta"><span class="blog-date">${date}</span><span>노동법률사무소 혁신 블로그</span></div>
+        <h2 class="blog-title"><a href="${item.link}" target="_blank" rel="noopener">${item.title}</a></h2>
+        <p class="blog-desc">${desc}${desc.length >= 120 ? '…' : ''}</p>
+      </div>
+    `;
+    list.appendChild(el);
+  });
+}
+
+function renderBlogError() {
+  const list = document.getElementById('blogList');
+  list.innerHTML = `
+    <div class="blog-state">
+      지금은 블로그 글 목록을 자동으로 불러오지 못했습니다.<br>
+      아래 버튼을 눌러 네이버 블로그에서 최신 글을 바로 확인해 주세요.<br>
+      <a href="https://blog.naver.com/${NAVER_BLOG_ID}" target="_blank" rel="noopener">blog.naver.com/${NAVER_BLOG_ID} 바로가기</a>
+    </div>
+  `;
+}
+
+fetch(RSS_TO_JSON_ENDPOINT)
+  .then(res => res.json())
+  .then(data => {
+    if (data.status === 'ok' && data.items) {
+      renderBlogItems(data.items);
+    } else {
+      renderBlogError();
+    }
+  })
+  .catch(() => {
+    renderBlogError();
+  });
+
+// ===== 지난 글 아카이브 (정확한 원문 링크가 없어, 블로그 내 검색으로 연결) =====
+// 나중에 정확한 게시글 URL을 알려주시면 title 옆에 url을 추가해 직접 링크로 바꿀 수 있습니다.
+const BLOG_ARCHIVE = [
+  { title: '휴게시간 중 근무했다면 임금체불에 해당 할 수 있습니다. (1)', date: '2026.09.16' },
+  { title: '삼성전자 월세 부당이득 사건, 후회되지만 사직서 제출은 돌이킬 수 없습니다.', date: '2026.09.09' },
+  { title: '실업급여 부정수급, 쉽게 넘어 갈 일이 아닙니다.', date: '2026.09.01' },
+  { title: '배달기사도 근로자라면 퇴직금 등이 추가 발생합니다.', date: '2026.08.26' },
+  { title: '학원강사, 헬스트레이너 등 프리랜서의 근로자성 진정 문제, 중요합니다', date: '2026.08.26' },
+  { title: '공공기관 비정규직 징계 근로감독! 반드시 대비해야 합니다.', date: '2026.08.19' },
+  { title: '계약갱신기대권? 정규직전환기대권? 기대권에 관한 모든 것을 알려', date: '2026.08.04' },
+  { title: '육아기 근로시간 단축, 꼭 보고 가세요!', date: '2026.08.04' },
+  { title: '주휴수당, 정확히 계산하고 있나요?', date: '2026.08.03' },
+  { title: '부당노동행위, 사업주와 노동조합 모두 주의해야합니다. (1)', date: '2026.08.03' },
+  { title: '기간제 근로자 사용, 사장님들 이건 꼭 알고 가셔야 합니다.', date: '2026.07.30' },
+  { title: '근로계약서 작성, 반드시 확인하셔야 합니다!', date: '2026.07.29' },
+  { title: '징계위원회 운영 시 유의사항 총 정리(절차적 정당성의 중요성)', date: '2026.07.27' },
+  { title: '연차촉진제도, 사용자와 근로자 모두 꼼꼼히 챙겨야 합니다.', date: '2026.07.24' },
+  { title: '노동조합 설립, 근로자와 사용자 모두에게 중요한 사안입니다.', date: '2026.07.22' },
+  { title: '복수노동조합 사업장에서 반드시 챙겨야 할 교섭창구단일화 절차!', date: '2026.07.22' },
+  { title: '노란봉투법(개정노동조합법) 중요사항 및 노무자문 필요성', date: '2026.07.21' },
+  { title: '육아휴직 A to Z까지, 육아휴직의 모든 것 (2)', date: '2026.07.21' },
+  { title: '해고 서면통지 위반은 부당해고, 대응은 사건 전문 노무사와 함께!', date: '2026.07.20' },
+  { title: '2027년 최저임금 10,700원!', date: '2026.07.16' },
+  { title: '노동감독관 직무집행법 알림', date: '2026.07.16' },
+  { title: '기간제, 파견근로자 결원대체 관련 행정해석 변경(2026.7.1. 시행)', date: '2026.07.14' },
+  { title: '배달앱 라이더의 근로자성 및 해고 여부에 관한 고등법원 사례 (10)', date: '2026.07.13' },
+  { title: '포괄임금 오남용 감독 관련 주의사항', date: '2026.07.13' },
+  { title: '최신 취업규칙 불이익 변경 판례 (1)', date: '2026.07.06' }
+];
+const ARCHIVE_PER_PAGE = 10;
+
+function archiveSearchUrl(title) {
+  const shortTitle = title.replace(/\s*\(\d+\)\s*$/, '').slice(0, 40);
+  return `https://search.naver.com/search.naver?query=${encodeURIComponent('site:blog.naver.com/ivcpla ' + shortTitle)}`;
+}
+
+(function initArchive() {
+  const listEl = document.getElementById('archiveList');
+  const pagerEl = document.getElementById('archivePagination');
+  const totalPages = Math.ceil(BLOG_ARCHIVE.length / ARCHIVE_PER_PAGE);
+  let currentPage = 1;
+
+  function renderPage(page) {
+    currentPage = page;
+    listEl.innerHTML = '';
+    const start = (page - 1) * ARCHIVE_PER_PAGE;
+    const pageItems = BLOG_ARCHIVE.slice(start, start + ARCHIVE_PER_PAGE);
+    pageItems.forEach(item => {
+      const row = document.createElement('div');
+      row.className = 'archive-item';
+      row.innerHTML = `
+        <a href="${archiveSearchUrl(item.title)}" target="_blank" rel="noopener">${item.title}</a>
+        <span class="archive-date">${item.date}</span>
+      `;
+      listEl.appendChild(row);
+    });
+    pagerEl.querySelectorAll('.page-btn[data-page]').forEach(btn => {
+      btn.classList.toggle('active', parseInt(btn.dataset.page, 10) === page);
+    });
+    const prevBtn = pagerEl.querySelector('[data-nav="prev"]');
+    const nextBtn = pagerEl.querySelector('[data-nav="next"]');
+    if (prevBtn) prevBtn.disabled = (page === 1);
+    if (nextBtn) nextBtn.disabled = (page === totalPages);
+  }
+
+  function goTo(page) {
+    if (page < 1 || page > totalPages) return;
+    renderPage(page);
+    document.querySelector('.blog-section-title').scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+
+  if (totalPages > 1) {
+    const prevBtn = document.createElement('button');
+    prevBtn.className = 'page-btn page-nav';
+    prevBtn.dataset.nav = 'prev';
+    prevBtn.textContent = '이전';
+    prevBtn.onclick = () => goTo(currentPage - 1);
+    pagerEl.appendChild(prevBtn);
+
+    for (let p = 1; p <= totalPages; p++) {
+      const btn = document.createElement('button');
+      btn.className = 'page-btn';
+      btn.dataset.page = p;
+      btn.textContent = p;
+      btn.onclick = () => goTo(p);
+      pagerEl.appendChild(btn);
+    }
+
+    const nextBtn = document.createElement('button');
+    nextBtn.className = 'page-btn page-nav';
+    nextBtn.dataset.nav = 'next';
+    nextBtn.textContent = '다음';
+    nextBtn.onclick = () => goTo(currentPage + 1);
+    pagerEl.appendChild(nextBtn);
+  }
+
+  renderPage(1);
+})();
+</script>
+</body>
+</html>
