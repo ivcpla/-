@@ -568,7 +568,8 @@ nav.scrolled .nav-toggle span { background: var(--gd); }
 .pt-card:hover { transform: translateY(-3px); box-shadow: 0 14px 30px rgba(10,17,40,0.06); }
 .pt-head {
   display: flex; align-items: baseline; gap: 12px;
-  padding: 24px 24px 18px; margin: 0 0 0;
+  padding: 22px 24px;
+  background: linear-gradient(150deg, #E9F2FC 0%, #F6FAFE 100%);
   border-bottom: 1px solid var(--border);
 }
 .pt-no { font-family: 'Cinzel', serif; font-size: 13px; font-weight: 700; letter-spacing: 1.5px; line-height: 1; color: var(--gb); }
