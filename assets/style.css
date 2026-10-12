@@ -554,29 +554,69 @@ nav.scrolled .nav-toggle span { background: var(--gd); }
 .sig-name { font-family: 'Noto Serif KR', serif; font-size: 19px; font-weight: 700; color: var(--gd); }
 .sig-role { font-size: 13px; color: var(--ts); }
 
-.profile-detail {
-  display: grid; grid-template-columns: 1fr 1fr; gap: 44px;
-  margin-top: 36px; padding-top: 32px; border-top: 1px solid var(--border);
+/* ===== PROFILE TRIO (경력 / 자격·학력 / 주요 업무) ===== */
+.profile-trio { container-type: inline-size; margin-top: 56px; padding-top: 40px; border-top: 1px solid var(--border); width: 100%; }
+.pt-grid { display: grid; grid-template-columns: 1fr; gap: 20px; align-items: stretch; }
+@container (min-width: 720px) {
+  .pt-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px; }
 }
-.profile-col-title {
-  font-family: 'Noto Serif KR', serif; font-size: 15px; font-weight: 600; color: var(--gd);
-  letter-spacing: 0.5px; margin-bottom: 22px; padding-bottom: 12px;
-  border-bottom: 1px solid var(--gl); display: inline-block;
+.pt-card {
+  display: flex; flex-direction: column;
+  background: var(--white); border: 1px solid var(--border); border-top: 3px solid var(--gl);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
-.profile-rows { list-style: none; }
-.profile-rows li { display: flex; gap: 16px; padding: 15px 0; border-bottom: 1px solid var(--border); font-size: 15.5px; align-items: baseline; }
-.profile-rows li:last-child { border-bottom: none; }
-.pr-tag { flex-shrink: 0; width: 32px; font-size: 12px; font-weight: 700; color: var(--gl); letter-spacing: 0.5px; }
-.pr-body { flex: 1; display: flex; justify-content: space-between; align-items: baseline; gap: 12px; }
-.pr-body strong { color: var(--td); font-weight: 600; }
-.pr-body em { font-style: normal; color: var(--ts); font-size: 13.5px; flex-shrink: 0; white-space: nowrap; }
-.profile-tags { display: flex; flex-wrap: wrap; row-gap: 10px; font-size: 14.5px; color: var(--tm); font-weight: 400; }
-.profile-tags span { position: relative; padding-right: 16px; margin-right: 16px; }
-.profile-tags span:last-child { padding-right: 0; margin-right: 0; }
-.profile-tags span:not(:last-child)::after {
-  content: ''; position: absolute; right: 0; top: 50%; transform: translateY(-50%);
-  width: 1px; height: 12px; background: var(--border);
+.pt-card:hover { transform: translateY(-4px); box-shadow: 0 20px 40px rgba(10,17,40,0.08); }
+.pt-head {
+  display: flex; align-items: center; gap: 14px;
+  padding: 22px 24px;
+  background: linear-gradient(135deg, var(--gd) 0%, var(--gm) 100%);
 }
+.pt-no { font-family: 'Cinzel', serif; font-size: 24px; font-weight: 500; line-height: 1; color: var(--gl); }
+.pt-head h3 { font-family: 'Noto Serif KR', serif; font-size: 18px; font-weight: 700; line-height: 1.25; color: var(--white); letter-spacing: -0.5px; }
+.pt-head small { display: block; margin-top: 4px; font-family: 'Cinzel', serif; font-size: 10.5px; letter-spacing: 2px; text-transform: uppercase; color: rgba(255,255,255,0.55); }
+
+/* 01 경력 타임라인 */
+.pt-timeline {
+  list-style: none; flex: 1; position: relative;
+  display: flex; flex-direction: column; justify-content: space-between; gap: 22px;
+  margin: 0; padding: 28px 24px 28px 46px;
+}
+.pt-timeline::before { content: ''; position: absolute; left: 28px; top: 40px; bottom: 40px; width: 1px; background: var(--border); }
+.pt-timeline li { position: relative; display: grid; grid-template-columns: 1fr auto; column-gap: 10px; row-gap: 3px; align-items: center; }
+.pt-timeline li::before {
+  content: ''; position: absolute; left: -22px; top: 5px; width: 11px; height: 11px;
+  border-radius: 50%; background: var(--white); border: 2px solid var(--gb);
+}
+.pt-timeline li.current::before { background: var(--gb); box-shadow: 0 0 0 4px rgba(0,70,140,0.12); }
+.pt-period { grid-column: 1; grid-row: 1; font-size: 12px; font-weight: 500; letter-spacing: 0.3px; color: var(--ts); font-variant-numeric: tabular-nums; }
+.pt-badge { grid-column: 2; grid-row: 1; font-size: 11px; font-weight: 700; line-height: 1.5; padding: 0 7px; color: var(--ts); border: 1px solid var(--border); }
+.pt-timeline li.current .pt-badge { color: var(--white); background: var(--gb); border-color: var(--gb); }
+.pt-timeline strong { grid-column: 1 / -1; font-size: 16px; font-weight: 700; line-height: 1.4; color: var(--gd); }
+.pt-role { grid-column: 1 / -1; font-size: 13px; font-weight: 300; line-height: 1.6; color: var(--tm); }
+
+/* 02 자격 · 학력 */
+.pt-creds { flex: 1; display: flex; flex-direction: column; gap: 16px; padding: 24px; }
+.pt-cred {
+  flex: 1; display: flex; align-items: center; gap: 18px;
+  padding: 22px 20px; background: var(--gp); border-left: 3px solid var(--gb);
+}
+.pt-cred-icon { flex-shrink: 0; width: 44px; height: 44px; display: flex; align-items: center; justify-content: center; background: var(--white); border: 1px solid var(--border); }
+.pt-cred-icon svg { width: 22px; height: 22px; stroke: var(--gm); fill: none; stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; }
+.pt-cred-body { display: flex; flex-direction: column; gap: 4px; min-width: 0; }
+.pt-cred-k { font-family: 'Cinzel', serif; font-size: 10.5px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--gb); }
+.pt-cred strong { font-family: 'Noto Serif KR', serif; font-size: 19px; font-weight: 700; line-height: 1.35; color: var(--gd); }
+.pt-cred-s { font-size: 13.5px; font-weight: 300; color: var(--tm); }
+
+/* 03 주요 업무 */
+.pt-practice { list-style: none; flex: 1; display: flex; flex-direction: column; margin: 0; padding: 12px 24px; }
+.pt-practice li {
+  flex: 1; display: grid; grid-template-columns: auto 1fr; column-gap: 14px; row-gap: 2px; align-content: center;
+  padding: 13px 0; border-bottom: 1px solid var(--border);
+}
+.pt-practice li:last-child { border-bottom: none; }
+.pt-idx { grid-row: 1 / span 2; padding-top: 2px; font-family: 'Cinzel', serif; font-size: 13px; font-weight: 700; color: var(--gl); }
+.pt-practice strong { font-size: 15px; font-weight: 600; line-height: 1.5; color: var(--td); word-break: keep-all; }
+.pt-practice em { font-style: normal; font-family: 'Cinzel', serif; font-size: 10.5px; letter-spacing: 1.5px; text-transform: uppercase; color: var(--ts); }
 
 /* ===== LOCATION / DIRECTIONS ===== */
 .loc-map {
@@ -733,7 +773,12 @@ footer {
   .greeting-wrap { grid-template-columns: 1fr; gap: 40px; }
   .avatar-frame { aspect-ratio: 4 / 3; max-width: 360px; margin: 0 auto; }
   .greeting-quote { font-size: 19px; }
-  .profile-detail { grid-template-columns: 1fr; gap: 32px; margin-top: 28px; padding-top: 24px; }
+  .profile-trio { margin-top: 40px; padding-top: 28px; }
+  .pt-head { padding: 18px 20px; }
+  .pt-timeline { padding: 24px 20px 24px 42px; }
+  .pt-timeline::before { left: 25px; }
+  .pt-creds { padding: 20px; }
+  .pt-practice { padding: 8px 20px; }
   .services-tab { overflow-x: auto; margin-bottom: 32px; }
   .stab { padding: 12px 18px; font-size: 13.5px; }
   .service-detail { grid-template-columns: 1fr; gap: 40px; }
