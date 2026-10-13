@@ -742,3 +742,18 @@ footer {
   footer { grid-template-columns: 1fr; padding: 48px 24px; }
   .footer-copy { grid-column: 1; }
 }
+
+/* ===== 주요 업무 상세 ===== */
+.work-list { border-top: 1px solid var(--border); }
+.work-row { display: grid; grid-template-columns: 300px 1fr; gap: 32px; padding: 24px 0; border-bottom: 1px solid var(--border); align-items: start; }
+.work-row:last-child { border-bottom: none; padding-bottom: 4px; }
+.work-head { display: flex; gap: 16px; align-items: baseline; }
+.work-no { flex-shrink: 0; width: 32px; font-family: 'Cinzel', serif; font-size: 13px; font-weight: 700; color: var(--gl); letter-spacing: 0.5px; }
+.work-head strong { font-size: 15.5px; font-weight: 600; color: var(--td); line-height: 1.5; word-break: keep-all; }
+.work-items { list-style: none; display: grid; grid-template-columns: 1fr 1fr; gap: 10px 32px; }
+.work-items li { position: relative; padding-left: 14px; font-size: 14px; font-weight: 300; color: var(--tm); line-height: 1.7; word-break: keep-all; }
+.work-items li::before { content: ''; position: absolute; left: 0; top: 11px; width: 4px; height: 4px; background: var(--gb); }
+@media (max-width: 992px) {
+  .work-row { grid-template-columns: 1fr; gap: 12px; padding: 20px 0; }
+  .work-items { grid-template-columns: 1fr; gap: 6px; }
+}
