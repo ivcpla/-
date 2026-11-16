@@ -665,6 +665,38 @@ footer:not(.footer) .footer-copy { grid-column: 1 / -1; padding-top: 22px; borde
 .contact-inner .btn-primary { background: #fff; color: var(--ink); }
 .contact-inner .btn-primary:hover { background: var(--blue); color: #fff; }
 
+
+/* =====================================================================
+   대표 노무사 소개: 배너형 프로필
+   ===================================================================== */
+.profile-wrap { max-width: 1240px; margin: 0 auto; padding: calc(var(--header-h) + 36px) 48px 40px; }
+.profile-banner { position: relative; height: 500px; border-radius: 28px; overflow: hidden; color: var(--ink); background: linear-gradient(105deg, #f1f6fc 0%, #e2ecf7 48%, #cfdeef 100%); }
+.profile-banner-mark { position: absolute; top: 34px; right: 44px; font-size: 14px; font-weight: 800; letter-spacing: -0.02em; color: var(--blue); }
+.profile-banner-photo { position: absolute; left: 50%; bottom: 0; height: 85%; width: auto; transform: translateX(-2%); mix-blend-mode: multiply; -webkit-mask-image: radial-gradient(ellipse 50% 118% at 50% 40%, #000 58%, rgba(0,0,0,.6) 80%, transparent 100%); mask-image: radial-gradient(ellipse 50% 118% at 50% 40%, #000 58%, rgba(0,0,0,.6) 80%, transparent 100%); }
+.profile-banner-name { position: absolute; left: 60px; bottom: 56px; }
+.profile-banner-name h2 { font-family: var(--font-sans); font-size: 42px; font-weight: 800; letter-spacing: -0.04em; line-height: 1.15; }
+.profile-banner-name p { margin-top: 10px; font-size: 16px; font-weight: 500; color: var(--tm); }
+.profile-banner-arrow { position: absolute; right: 56px; bottom: 52px; width: 58px; height: 58px; display: flex; align-items: center; justify-content: center; border: 1px solid var(--ink); border-radius: 50%; color: var(--ink); cursor: pointer; transition: background .25s, color .25s, border-color .25s; }
+.profile-banner-arrow:hover { background: var(--blue); border-color: var(--blue); color: #fff; }
+.profile-caption { padding: 22px 8px 22px; text-align: right; font-size: 15px; color: var(--tm); }
+.profile-caption b { margin-right: 8px; font-size: 20px; font-weight: 800; letter-spacing: -0.03em; color: var(--ink); }
+.profile-panel { display: grid; grid-template-columns: 1.1fr 1.7fr 1.1fr; gap: 0 28px; padding: 36px 40px 42px; background: #f5f6f8; border-top: 1px solid var(--border); }
+.profile-col { display: flex; gap: 28px; align-items: flex-start; }
+.profile-col h3 { flex-shrink: 0; min-width: 56px; font-size: 16px; font-weight: 800; letter-spacing: -0.03em; color: var(--ink); line-height: 1.55; }
+.profile-col ul li { font-size: 15px; line-height: 1.55; padding: 3px 0; color: #1d2430; }
+.profile-col ul li em { display: inline-block; margin-right: 5px; font-style: normal; color: var(--blue); font-weight: 700; }
+@media (max-width: 992px) {
+  .profile-wrap { padding: calc(var(--header-h) + 20px) 20px 20px; }
+  .profile-banner { height: 440px; border-radius: 20px; }
+  .profile-banner-photo { height: 70%; left: auto; right: -4%; transform: none; -webkit-mask-image: linear-gradient(to right, transparent 0, #000 30%, #000 100%); mask-image: linear-gradient(to right, transparent 0, #000 30%, #000 100%); }
+  .profile-banner-name { left: 26px; top: 34px; bottom: auto; }
+  .profile-banner-name h2 { font-size: 34px; }
+  .profile-banner-arrow { width: 48px; height: 48px; left: 26px; right: auto; bottom: 28px; }
+  .profile-banner-mark { display: none; }
+  .profile-caption { text-align: left; padding: 16px 4px; }
+  .profile-panel { grid-template-columns: 1fr; gap: 30px; padding: 28px 24px 34px; }
+}
+
 /* =====================================================================
    반응형
    ===================================================================== */
