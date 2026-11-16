@@ -18,42 +18,11 @@
 <meta property="og:locale" content="ko_KR">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;800&family=Noto+Serif+KR:wght@400;500;600;700&family=Cinzel:wght@500;700&family=Nanum+Pen+Script&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/style.css">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Serif+KR:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/style-v2.css">
 
-<style>
-/* ===== BLOG PAGE 전용 (news.html의 news-item 스타일과 톤을 맞춤) ===== */
-.blog-intro { font-size: 15px; color: var(--tm); font-weight: 300; margin-bottom: 50px; }
-.blog-intro a { color: var(--gb); text-decoration: underline; }
-.blog-list { display: flex; flex-direction: column; gap: 28px; }
-.blog-item { border: 1px solid var(--border); padding: 32px 36px; background: var(--white); display: flex; gap: 24px; }
-.blog-item-thumb { flex: 0 0 160px; width: 160px; height: 110px; object-fit: cover; background: var(--gp); }
-.blog-item-body { flex: 1; min-width: 0; }
-.blog-meta { display: flex; gap: 14px; align-items: center; margin-bottom: 12px; font-size: 13px; color: var(--ts); }
-.blog-date { font-weight: 700; color: var(--gb); }
-.blog-title { font-size: 19px; font-weight: 700; margin-bottom: 10px; line-height: 1.5; }
-.blog-title a { color: var(--gd); text-decoration: none; }
-.blog-title a:hover { color: var(--gb); text-decoration: underline; }
-.blog-desc { font-size: 14.5px; color: var(--tm); font-weight: 300; line-height: 1.75; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
-.blog-state { padding: 60px 20px; text-align: center; color: var(--tm); font-size: 15px; font-weight: 300; }
-.blog-state a { color: var(--gb); font-weight: 500; }
-  .blog-pagination { display:flex; justify-content:center; align-items:center; gap:8px; margin-top:40px; flex-wrap:wrap; }
-  .page-btn { min-width:38px; height:38px; padding:0 12px; border:1px solid var(--border); background:var(--white); color:var(--tm); cursor:pointer; font-size:14px; }
-  .page-btn:hover, .page-btn.active { background:var(--gd); color:#fff; border-color:var(--gd); }
-  .page-btn:disabled { opacity:.4; cursor:default; }
-.blog-more-wrap { text-align: center; margin-top: 44px; }
-.blog-more-btn { display: inline-block; padding: 14px 36px; border: 1px solid var(--gd); color: var(--gd); font-size: 14px; letter-spacing: 0.5px; text-decoration: none; transition: 0.2s; }
-.blog-more-btn:hover { background: var(--gd); color: #fff; }
-
-.blog-thumb-link { flex: 0 0 220px; width: 220px; height: 145px; display: block; overflow: hidden; background: var(--gp); }
-.blog-item-thumb { width: 100%; height: 100%; object-fit: cover; display: block; }
-.blog-item-thumb-empty { display:flex; align-items:center; justify-content:center; color:var(--ts); font-size:13px; letter-spacing:1px; }
-@media (max-width: 640px) {
-  .blog-item { flex-direction: column; padding: 22px; }
-  .blog-item-thumb { width: 100%; height: 180px; }
-  .blog-title { font-size: 17px; }
-}
-</style>
 </head>
 <body>
 
