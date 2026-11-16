@@ -622,6 +622,49 @@ footer:not(.footer) .footer-copy { grid-column: 1 / -1; padding-top: 22px; borde
 .career-body h4 { font-family: var(--font-serif); font-size: 22px; font-weight: 700; letter-spacing: -0.045em; line-height: 1.4; color: var(--ink); }
 .career-body p { margin-top: 2px; font-size: 15px; color: var(--tm); }
 
+/* ---- 자격·학력: 상단 하늘색 / 하단 그라데이션 ---- */
+.cred-card { background: none; color: var(--ink); padding: 0; }
+.cred-top { background: #d4e5f6; padding: 48px 40px 40px; }
+.cred-bottom { flex: 1; display: flex; flex-direction: column; padding: 8px 40px 40px; background: linear-gradient(180deg, #f4f8fd 0%, #dfecf8 50%, #bfd6ee 100%); }
+.cred-card .cred-eyebrow { color: var(--blue); }
+.cred-card-title { color: var(--ink); margin-bottom: 28px; }
+.cred-main { padding-bottom: 0; border-bottom: none; color: var(--ink); }
+.cred-main span { border-color: var(--blue); color: var(--blue); }
+.cred-facts { margin: 0 0 28px; }
+.cred-facts li { border-bottom: 1px solid rgba(12,15,20,.1); }
+.cred-facts li b { color: var(--blue); }
+.cred-note { color: var(--tm); }
+/* ---- 경력: 가운데 정렬 ---- */
+.cred-career { display: flex; align-items: center; justify-content: center; padding: 48px 40px; }
+.cred-career-inner { width: 100%; max-width: 540px; }
+
+/* =====================================================================
+   히어로: 유리 고층빌딩 (어두운 톤 · 흰 글씨)
+   ===================================================================== */
+.header:not(.scrolled):not(.mega-open):not(.menu-open) { border-bottom-color: rgba(255,255,255,.2); }
+.header:not(.scrolled):not(.mega-open):not(.menu-open) .logo-text { color: #fff; }
+.header:not(.scrolled):not(.mega-open):not(.menu-open) .nav-item { color: rgba(255,255,255,.94); }
+.header:not(.scrolled):not(.mega-open):not(.menu-open) .nav-item:hover, .header:not(.scrolled):not(.mega-open):not(.menu-open) .nav-item.active { color: #fff; }
+.header:not(.scrolled):not(.mega-open):not(.menu-open) .header-cta { background: #fff; color: var(--ink); }
+.header:not(.scrolled):not(.mega-open):not(.menu-open) .header-cta:hover { background: var(--blue); color: #fff; }
+.header:not(.scrolled):not(.mega-open):not(.menu-open) .menu-toggle span { background: #fff; }
+.hero { background: #0b1a33 url('hero-towers.jpg') center / cover no-repeat; color: #fff; }
+.hero::before { background: linear-gradient(90deg, rgba(6,15,34,.82) 0%, rgba(6,15,34,.55) 38%, rgba(6,15,34,.08) 70%, rgba(6,15,34,0) 100%), linear-gradient(180deg, rgba(6,15,34,.5) 0%, rgba(6,15,34,0) 22%); }
+.hero-slogan { color: rgba(255,255,255,.85); }
+.hero-slogan span + span::before { background: var(--gl); }
+.hero-hl, .hero-sub { color: #fff; }
+.hero-hl .em { color: #a9c4f2; }
+.hero-desc { color: rgba(255,255,255,.78); }
+.btn-primary { background: #fff; color: var(--ink); }
+.btn-primary:hover { background: var(--blue); color: #fff; }
+.btn-secondary { background: transparent; color: #fff; border-color: rgba(255,255,255,.55); }
+.btn-secondary:hover { background: rgba(255,255,255,.12); border-color: #fff; color: #fff; }
+.hero-foot { border-top-color: rgba(255,255,255,.2); }
+.hero-foot-meta { color: rgba(255,255,255,.75); }
+.hero-foot-meta b { color: var(--gl); }
+.contact-inner .btn-primary { background: #fff; color: var(--ink); }
+.contact-inner .btn-primary:hover { background: var(--blue); color: #fff; }
+
 /* =====================================================================
    반응형
    ===================================================================== */
@@ -638,8 +681,9 @@ footer:not(.footer) .footer-copy { grid-column: 1 / -1; padding-top: 22px; borde
   :root { --header-h: 72px; }
   .nav, .header-cta, .megamenu, nav .nav-menu, nav .nav-cta { display: none; }
   .credentials { grid-template-columns: 1fr; margin-top: 56px; }
-  .cred-card { padding: 36px 26px; }
   .cred-main { font-size: 32px; }
+  .cred-top { padding: 36px 26px 30px; }
+  .cred-bottom { padding: 6px 26px 34px; }
   .cred-career { padding: 40px 0 8px; }
   .career-item { grid-template-columns: 1fr; gap: 6px; padding-left: 34px; }
   .career-body h4 { font-size: 20px; }
