@@ -23,50 +23,95 @@
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Serif+KR:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/style-v2.css?v=20261117">
 
-<style>
-/* 상단바 폭을 메인 페이지와 동일하게 (캐시와 무관하게 적용) */
-nav{padding:0 max(48px,calc((100% - 1280px)/2 + 48px))}
-@media(max-width:1100px){nav{padding:0 32px}}
-@media(max-width:992px){nav{padding:0 20px}}
-</style>
 </head>
 <body>
 
-<!-- ===== NAV ===== -->
-<nav>
-  <a class="nav-logo" href="index.html" style="text-decoration:none;">
-    <span class="nav-logo-text">노동법률사무소 혁신</span>
-  </a>
-  <div class="nav-menu">
-    <a class="nav-item" href="index.html#about" style="text-decoration:none;">사무소 소개</a>
-    <a class="nav-item" href="index.html#services" style="text-decoration:none;">업무분야</a>
-    <div class="nav-drop">
-      <a class="nav-item active" id="nav-resources" href="news.html" style="text-decoration:none;">자료실</a>
-      <div class="nav-drop-menu"><a href="news.html">노동 뉴스</a><a href="blog.html">블로그</a></div>
+<!-- ===== HEADER (메인 페이지와 동일) ===== -->
+<header class="header scrolled" id="header">
+    <div class="container header-inner">
+        <a class="logo" href="index.html" aria-label="노동법률사무소 혁신 홈으로"><span class="logo-text">노동법률사무소 혁신</span></a>
+
+        <div class="nav" id="nav">
+            <a class="nav-item" id="nav-about" href="index.html#about">사무소 소개</a>
+            <a class="nav-item" id="nav-services" href="index.html#services">업무분야</a>
+            <a class="nav-item active" id="nav-resources" href="news.html">자료실</a>
+            <a class="nav-item" id="nav-consult" href="index.html#consult">상담예약</a>
+        </div>
+
+        <a class="header-cta" href="index.html#consult">Consultation</a>
+
+        <button class="menu-toggle" id="menuToggle" aria-label="메뉴 열기"><span></span><span></span><span></span></button>
     </div>
-    <a class="nav-item" href="index.html#consult" style="text-decoration:none;">상담예약</a>
-  </div>
-  <a class="nav-cta" href="index.html#consult" style="text-decoration:none;">Consultation</a>
-  <button class="nav-toggle" id="navToggle" onclick="toggleMobileNav()" aria-label="메뉴 열기">
-    <span></span><span></span><span></span>
-  </button>
-</nav>
-<div class="mobile-nav" id="mobileNav">
-  <div class="mobile-nav-item">
-    <a class="mnav-title" href="index.html#about" style="text-decoration:none; color:inherit;">사무소 소개</a>
-  </div>
-  <div class="mobile-nav-item">
-    <a class="mnav-title" href="index.html#services" style="text-decoration:none; color:inherit;">업무분야</a>
-  </div>
-  <div class="mobile-nav-item">
-    <a class="mnav-title" href="news.html" style="text-decoration:none; color:inherit;">자료실</a>
-    <div class="mnav-sub"><a href="news.html">노동 뉴스</a><a href="blog.html">블로그</a></div>
-  </div>
-  <div class="mobile-nav-item">
-    <a class="mnav-title" href="index.html#consult" style="text-decoration:none; color:inherit;">상담예약</a>
-  </div>
-  <div class="mobile-cta" onclick="location.href='index.html#consult'">Consultation</div>
-</div>
+
+    <!-- 메가메뉴 (헤더에 마우스를 올리면 전체 펼침) -->
+    <div class="megamenu" id="megamenu">
+        <div class="megamenu-inner">
+            <div class="megamenu-col">
+                <div class="megamenu-col-title">사무소 소개</div>
+                <ul class="megamenu-list">
+                    <li><a href="index.html#about-greeting">인사말 및 대표노무사 소개</a></li>
+                    <li><a href="index.html#about-location">오시는 길</a></li>
+                </ul>
+            </div>
+            <div class="megamenu-col">
+                <div class="megamenu-col-title">업무분야</div>
+                <ul class="megamenu-list">
+                        <li><a href="index.html#services-tab0">기업 자문</a></li>
+                        <li><a href="index.html#services-tab1">개별적 노동관계</a></li>
+                        <li><a href="index.html#services-tab2">집단적 노사관계</a></li>
+                        <li><a href="index.html#services-tab3">노동사건 대리</a></li>
+                        <li><a href="index.html#services-tab4">산업재해보상 대리</a></li>
+                        <li><a href="index.html#services-tab5">인사·임금 컨설팅</a></li>
+                        <li><a href="index.html#services-tab6">노동교육·강의</a></li>
+                </ul>
+            </div>
+            <div class="megamenu-col">
+                <div class="megamenu-col-title">자료실</div>
+                <ul class="megamenu-list">
+                    <li><a href="news.html">노동 뉴스</a></li>
+                    <li><a href="blog.html">블로그</a></li>
+                </ul>
+            </div>
+            <div class="megamenu-col">
+                <div class="megamenu-col-title">상담예약</div>
+                <ul class="megamenu-list">
+                    <li><a href="index.html#consult">온라인 예약 및 문의 신청</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- 모바일 메뉴 -->
+    <div class="mobile-menu" id="mobileMenu">
+        <div class="mobile-menu-section">
+            <div class="mobile-menu-title">사무소 소개</div>
+            <div class="mobile-menu-list">
+                <a href="index.html#about-greeting">인사말 및 대표노무사 소개</a>
+                <a href="index.html#about-location">오시는 길</a>
+            </div>
+        </div>
+        <div class="mobile-menu-section">
+            <div class="mobile-menu-title">업무분야</div>
+            <div class="mobile-menu-list">
+                    <a href="index.html#services-tab0">기업 자문</a>
+                    <a href="index.html#services-tab1">개별적 노동관계</a>
+                    <a href="index.html#services-tab2">집단적 노사관계</a>
+                    <a href="index.html#services-tab3">노동사건 대리</a>
+                    <a href="index.html#services-tab4">산업재해보상 대리</a>
+                    <a href="index.html#services-tab5">인사·임금 컨설팅</a>
+                    <a href="index.html#services-tab6">노동교육·강의</a>
+            </div>
+        </div>
+        <div class="mobile-menu-section">
+            <div class="mobile-menu-title">자료실</div>
+            <div class="mobile-menu-list">
+                <a href="news.html">노동 뉴스</a>
+                <a href="blog.html">블로그</a>
+            </div>
+        </div>
+        <a class="mobile-menu-cta" href="index.html#consult">상담 예약하기</a>
+    </div>
+</header>
 
 <!-- ===== BLOG PAGE ===== -->
 <div class="page-hero">
@@ -109,19 +154,24 @@ nav{padding:0 max(48px,calc((100% - 1280px)/2 + 48px))}
 </footer>
 
 <script>
-function updateNavScrolled() {
-  const nav = document.querySelector('nav');
-  if (window.scrollY > 40) nav.classList.add('scrolled');
-  else nav.classList.remove('scrolled');
-}
-window.addEventListener('scroll', updateNavScrolled);
-window.addEventListener('resize', updateNavScrolled);
-updateNavScrolled();
-
-function toggleMobileNav() {
-  document.getElementById('navToggle').classList.toggle('open');
-  document.getElementById('mobileNav').classList.toggle('open');
-}
+const header = document.getElementById('header');
+(function () {
+  let t = null;
+  const open = () => { if (window.innerWidth > 992) { clearTimeout(t); header.classList.add('mega-open'); } };
+  const close = () => { t = setTimeout(() => header.classList.remove('mega-open'), 120); };
+  document.getElementById('nav').addEventListener('mouseenter', open);
+  document.getElementById('megamenu').addEventListener('mouseenter', open);
+  header.addEventListener('mouseleave', close);
+})();
+const menuToggle = document.getElementById('menuToggle');
+const mobileMenu = document.getElementById('mobileMenu');
+menuToggle.addEventListener('click', () => {
+  const opening = !mobileMenu.classList.contains('is-open');
+  menuToggle.classList.toggle('is-open', opening);
+  mobileMenu.classList.toggle('is-open', opening);
+  header.classList.toggle('menu-open', opening);
+  document.body.style.overflow = opening ? 'hidden' : '';
+});
 
 // ===== 네이버 블로그 자동 연동 =====
 // 네이버 블로그는 https://rss.blog.naver.com/{블로그ID}.xml 형태로 RSS 피드를 제공합니다.

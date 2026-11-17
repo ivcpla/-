@@ -1109,8 +1109,8 @@ document.addEventListener('DOMContentLoaded', () => {
   observeAll();
   updateHeaderState();
   // 외부 페이지(예: news.html)에서 index.html#services 같은 링크로 진입
-  const hash = window.location.hash.replace('#', '');
-  if (['about', 'services', 'consult'].includes(hash)) goPage(hash);
+  const [hPage, hSub] = window.location.hash.replace('#', '').split('-');
+  if (['about', 'services', 'consult'].includes(hPage)) goPage(hPage, hSub);
 });
 
 // ===== 상담 예약 폼 제출 (Formspree 연동) =====
