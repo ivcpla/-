@@ -808,3 +808,16 @@ footer:not(.footer) .footer-copy { grid-column: 1 / -1; padding-top: 22px; borde
   .section-label .kr { font-size: 30px; }
   .footer-top { grid-template-columns: 1fr; }
 }
+
+/* ---- news/blog 상단바: index 헤더와 동일한 폭(최대 1280px + 좌우 48px)으로 정렬 ---- */
+nav { padding: 0 max(48px, calc((100% - 1280px) / 2 + 48px)); }
+@media (max-width:1100px){ nav { padding: 0 32px; } }
+@media (max-width:992px){ nav { padding: 0 20px; } }
+
+/* ---- 노동 뉴스 & 상담 안내 제목 한 줄 ---- */
+.section-header.one-line .kr { white-space: nowrap; }
+@media (min-width: 993px){
+  .section-header.one-line { grid-template-columns: auto 1fr; }
+  .section-header.one-line > :last-child { justify-self: end; }
+}
+@media (max-width: 560px){ .section-header.one-line .kr { white-space: normal; } }
