@@ -670,9 +670,9 @@ footer:not(.footer) .footer-copy { grid-column: 1 / -1; padding-top: 22px; borde
    대표 노무사 소개: 배너형 프로필
    ===================================================================== */
 .profile-wrap { max-width: 1240px; margin: 0 auto; padding: calc(var(--header-h) + 36px) 48px 40px; }
-.profile-banner { position: relative; height: 500px; border-radius: 28px; overflow: hidden; color: var(--ink); background: linear-gradient(105deg, #f1f6fc 0%, #e2ecf7 48%, #cfdeef 100%); }
+.profile-banner { position: relative; height: 500px; border-radius: 28px; overflow: hidden; color: var(--ink); background: linear-gradient(105deg, #f7faff 0%, #ebf2fb 48%, #dce7f4 100%); }
 .profile-banner-mark { position: absolute; top: 34px; right: 44px; font-size: 14px; font-weight: 800; letter-spacing: -0.02em; color: var(--blue); }
-.profile-banner-photo { position: absolute; left: 50%; bottom: 0; height: 85%; width: auto; transform: translateX(-2%); mix-blend-mode: multiply; -webkit-mask-image: radial-gradient(ellipse 50% 118% at 50% 40%, #000 58%, rgba(0,0,0,.6) 80%, transparent 100%); mask-image: radial-gradient(ellipse 50% 118% at 50% 40%, #000 58%, rgba(0,0,0,.6) 80%, transparent 100%); }
+.profile-banner-photo { position: absolute; left: 50%; bottom: 0; height: 86%; width: auto; transform: translateX(-2%); mix-blend-mode: multiply; -webkit-mask-image: radial-gradient(ellipse 50% 118% at 50% 40%, #000 58%, rgba(0,0,0,.6) 80%, transparent 100%); mask-image: radial-gradient(ellipse 50% 118% at 50% 40%, #000 58%, rgba(0,0,0,.6) 80%, transparent 100%); }
 .profile-banner-name { position: absolute; left: 60px; bottom: 56px; }
 .profile-banner-name h2 { font-family: var(--font-sans); font-size: 42px; font-weight: 800; letter-spacing: -0.04em; line-height: 1.15; }
 .profile-banner-name p { margin-top: 10px; font-size: 16px; font-weight: 500; color: var(--tm); }
@@ -688,7 +688,7 @@ footer:not(.footer) .footer-copy { grid-column: 1 / -1; padding-top: 22px; borde
 @media (max-width: 992px) {
   .profile-wrap { padding: calc(var(--header-h) + 20px) 20px 20px; }
   .profile-banner { height: 440px; border-radius: 20px; }
-  .profile-banner-photo { height: 70%; left: auto; right: -4%; transform: none; -webkit-mask-image: linear-gradient(to right, transparent 0, #000 30%, #000 100%); mask-image: linear-gradient(to right, transparent 0, #000 30%, #000 100%); }
+  .profile-banner-photo { height: 80%; left: auto; right: -8%; transform: none; -webkit-mask-image: linear-gradient(to right, transparent 0, #000 30%, #000 100%); mask-image: linear-gradient(to right, transparent 0, #000 30%, #000 100%); }
   .profile-banner-name { left: 26px; top: 34px; bottom: auto; }
   .profile-banner-name h2 { font-size: 34px; }
   .profile-banner-arrow { width: 48px; height: 48px; left: 26px; right: auto; bottom: 28px; }
@@ -808,3 +808,16 @@ footer:not(.footer) .footer-copy { grid-column: 1 / -1; padding-top: 22px; borde
   .section-label .kr { font-size: 30px; }
   .footer-top { grid-template-columns: 1fr; }
 }
+
+/* ---- news/blog 상단바: index 헤더와 동일한 폭(최대 1280px + 좌우 48px)으로 정렬 ---- */
+nav { padding: 0 max(48px, calc((100% - 1280px) / 2 + 48px)); }
+@media (max-width:1100px){ nav { padding: 0 32px; } }
+@media (max-width:992px){ nav { padding: 0 20px; } }
+
+/* ---- 노동 뉴스 & 상담 안내 제목 한 줄 ---- */
+.section-header.one-line .kr { white-space: nowrap; }
+@media (min-width: 993px){
+  .section-header.one-line { grid-template-columns: auto 1fr; }
+  .section-header.one-line > :last-child { justify-self: end; }
+}
+@media (max-width: 560px){ .section-header.one-line .kr { white-space: normal; } }
