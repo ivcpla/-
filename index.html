@@ -1155,6 +1155,48 @@ if (consultForm) {
   });
 }
 
+
+// ===== 메인 화면 노동 뉴스: news.html의 최신 4건을 자동으로 가져옴 =====
+// news.html만 업데이트하면 메인에도 반영됩니다. (불러오기 실패 시 아래 HTML에 적힌 기본 목록이 그대로 보입니다.)
+(function () {
+  const list = document.querySelector('#resources .resource-list');
+  if (!list || location.protocol === 'file:') return;
+  fetch('news.html', { cache: 'no-cache' })
+    .then(r => r.ok ? r.text() : Promise.reject())
+    .then(txt => {
+      const doc = new DOMParser().parseFromString(txt, 'text/html');
+      const items = Array.from(doc.querySelectorAll('.news-item')).slice(0, 4);
+      if (!items.length) return;
+      list.innerHTML = '';
+      items.forEach(it => {
+        const a = it.querySelector('.news-title a');
+        const date = it.querySelector('.news-date');
+        const src = it.querySelector('.news-source');
+        if (!a || !date) return;
+        const li = document.createElement('li');
+        const link = document.createElement('a');
+        link.href = a.getAttribute('href');
+        link.target = '_blank';
+        link.rel = 'noopener';
+        const meta = document.createElement('div');
+        meta.className = 'resource-meta';
+        const tag = document.createElement('span');
+        tag.className = 'resource-tag';
+        tag.textContent = '— ' + (src ? src.textContent.trim() : '');
+        const dt = document.createElement('span');
+        dt.className = 'resource-date';
+        dt.textContent = date.textContent.trim();
+        meta.append(tag, dt);
+        const title = document.createElement('div');
+        title.className = 'resource-title';
+        title.textContent = a.textContent.trim();
+        link.append(meta, title);
+        li.appendChild(link);
+        list.appendChild(li);
+      });
+    })
+    .catch(() => {});
+})();
 </script>
 </body>
 </html>
